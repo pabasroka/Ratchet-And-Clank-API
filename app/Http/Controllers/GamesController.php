@@ -15,13 +15,35 @@ class GamesController extends Controller
         ], 200);
     }
 
-    public function test(): string
+    public function show($id)
     {
-        return "test";
+        return response([
+            'game' => Games::where('id', $id)
+                ->get()
+        ], 200);
     }
 
-    public function xd(): string
+    public function store(Request $request)
     {
-        return "xd";
+        $attrs = $request->validate([
+            'body' => 'required|string'
+        ]);
+
+        $image = $this->saveImage($request->image, 'games');
+
+        $game = Games::create([
+            'body' => $attrs['body'],
+            'image' => $image
+        ]);
+
+        return response([
+            'message' => 'Game created',
+            'game' => $game
+        ], 201);
+    }
+
+    public function create()
+    {
+        return view('games.create');
     }
 }

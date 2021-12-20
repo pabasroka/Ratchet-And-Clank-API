@@ -15,11 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(["prefix" => "/v1"], function () {
+Route::group(['prefix'=> '/v1'], function () {
 
     // Games
-    Route::group(["prefix" => "/games"], function () {
-        Route::get("/", [GamesController::class, "index"]);
+    Route::group(['prefix' => '/games'], function () {
+        Route::resource('', GamesController::class);
+        Route::get('/', [GamesController::class, 'index']);
+        Route::post('/', [GamesController::class, 'store']);
     });
 
     // Characters
