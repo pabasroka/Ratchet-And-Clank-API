@@ -9,6 +9,8 @@ class Games extends Model
 {
     use HasFactory;
 
+    protected $with = ['releases'];
+
     protected $fillable =[
         'title',
         'subtitle',
@@ -28,5 +30,10 @@ class Games extends Model
         'directors' => ['nullable', 'string', 'max:32'],
         'composer' => ['nullable', 'string', 'max:32'],
     ];
+
+    // Relationships
+    public function releases() {
+        return $this->hasMany(Releases::class, 'game_id', 'id');
+    }
 
 }

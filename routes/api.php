@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GamesController;
+use App\Http\Controllers\ReleasesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,10 +20,14 @@ Route::group(['prefix'=> '/v1'], function () {
 
     // Games
     Route::group(['prefix' => '/games'], function () {
-        Route::resource('', GamesController::class);
         Route::get('/', [GamesController::class, 'index']);
         Route::get('/{id}', [GamesController::class, 'show']);
         Route::post('/', [GamesController::class, 'store']);
+    });
+
+    // Releases
+    Route::group(['prefix' => '/releases'], function() {
+        Route::get('/', [ReleasesController::class, 'index']);
     });
 
     // Characters
@@ -31,6 +36,8 @@ Route::group(['prefix'=> '/v1'], function () {
 
     // Gadgets
 
+    // Galaxies
+
     // Planets
 
     // Enemies
@@ -38,4 +45,3 @@ Route::group(['prefix'=> '/v1'], function () {
     // etc
 
 });
-
