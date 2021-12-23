@@ -30,6 +30,9 @@ Route::group(['prefix'=> '/v1'], function () {
         Route::get('/', [ReleasesController::class, 'index']);
     });
 
+    //Platforms
+
+
     // Characters
 
     // Weapons

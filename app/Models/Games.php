@@ -9,7 +9,7 @@ class Games extends Model
 {
     use HasFactory;
 
-    protected $with = ['releases'];
+    protected $with = ['releases', 'platforms'];
 
     protected $fillable =[
         'title',
@@ -34,6 +34,10 @@ class Games extends Model
     // Relationships
     public function releases() {
         return $this->hasMany(Releases::class, 'game_id', 'id');
+    }
+
+    public function platforms() {
+        return $this->hasMany(Platforms::class, 'game_id', 'id');
     }
 
 }
