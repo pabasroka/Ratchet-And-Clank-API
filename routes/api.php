@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GamesController;
+use App\Http\Controllers\PlatformsController;
 use App\Http\Controllers\ReleasesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -31,7 +32,9 @@ Route::group(['prefix'=> '/v1'], function () {
     });
 
     //Platforms
-
+    Route::group(['prefix' => '/platforms'], function() {
+        Route::get('/', [PlatformsController::class, 'index']);
+    });
 
     // Characters
 
