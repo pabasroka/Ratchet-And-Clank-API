@@ -42,4 +42,11 @@ class GamesController extends Controller
         ], 201);
     }
 
+    // temporary view
+    public function welcome()
+    {
+        $games = Games::get();
+        return view('welcome', ['games' => $games]);
+    }
+
 }
