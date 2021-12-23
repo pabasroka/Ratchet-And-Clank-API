@@ -28,7 +28,14 @@ class GamesController extends Controller
     // POST
     public function store(GamesRequest $request)
     {
-        $game = Games::create($request->validated());
+        $validated = $request->validated();
+
+        $newImageName = time() . '-' . $request->title . '.' . $request->image->extension();
+        $request->image->move(public_path('images'), $newImageName);
+
+        $game = Games::create([
+            'image' => $newImageName
+        ] + $validated);
 
         return response([
             'game' => $game

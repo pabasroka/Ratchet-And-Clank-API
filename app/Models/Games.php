@@ -18,10 +18,12 @@ class Games extends Model
         'composer',
     ];
 
+    public $timestamps = false;
+
     public const VALIDATION_RULES = [
         'title' => ['required', 'string', 'max:64'],
         'subtitle' => ['nullable', 'string', 'max:64'],
-        'image'  => ['nullable', 'string'],
+        'image'  => ['nullable', 'image', 'max:5048'],
         'developers' => ['nullable', 'string', 'max:32'],
         'directors' => ['nullable', 'string', 'max:32'],
         'composer' => ['nullable', 'string', 'max:32'],
