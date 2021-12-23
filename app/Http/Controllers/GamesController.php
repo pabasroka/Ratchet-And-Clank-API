@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreGamesRequest;
 use App\Models\Games;
 use Illuminate\Http\Request;
 
@@ -15,6 +16,7 @@ class GamesController extends Controller
         ], 200);
     }
 
+    // GET BY ID
     public function show($id)
     {
         return response([
@@ -23,27 +25,26 @@ class GamesController extends Controller
         ], 200);
     }
 
-    public function store(Request $request)
+    // POST
+    public function store(StoreGamesRequest $storeGamesRequest)
     {
-        $attrs = $request->validate([
-            'body' => 'required|string'
-        ]);
+        $game = Games::create($storeGamesRequest->validated());
 
-        $image = $this->saveImage($request->image, 'games');
-
-        $game = Games::create([
-            'body' => $attrs['body'],
-            'image' => $image
-        ]);
+//        if ($request->hasFile('cover')) {
+//            $destinationPath = 'public/storage/games';
+//            $image = $request->file('cover');
+//            $imageName = $image->getClientOriginalName();
+//            $imagePath = $request->file('cover')->storeAs($destinationPath, $imageName);
+//        }
+//
+//        $game = Games::create([
+//            'body' => $attrs['body'],
+//            'image' => $imagePath
+//        ]);
 
         return response([
-            'message' => 'Game created',
             'game' => $game
         ], 201);
     }
 
-    public function create()
-    {
-        return view('games.create');
-    }
 }

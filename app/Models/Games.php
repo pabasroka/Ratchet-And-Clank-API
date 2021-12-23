@@ -9,16 +9,22 @@ class Games extends Model
 {
     use HasFactory;
 
+    protected $table = "games";
+
     protected $fillable =[
-        'name',
+        'title',
+        'subtitle',
         'cover',
+        'release',
+        'platforms',
         'developers',
         'directors',
         'composer',
     ];
 
-    protected $casts = [
-        'release' => 'array',
-    ];
+//    protected $casts = [
+//        'release' => 'array',
+//        'platforms' => 'array',
+//    ];
 
 }
