@@ -9,22 +9,22 @@ class Games extends Model
 {
     use HasFactory;
 
-    protected $table = "games";
-
     protected $fillable =[
         'title',
         'subtitle',
-        'cover',
-        'release',
-        'platforms',
+        'image',
         'developers',
         'directors',
         'composer',
     ];
 
-//    protected $casts = [
-//        'release' => 'array',
-//        'platforms' => 'array',
-//    ];
+    public const VALIDATION_RULES = [
+        'title' => ['required', 'string', 'max:64'],
+        'subtitle' => ['nullable', 'string', 'max:64'],
+        'image'  => ['nullable', 'string'],
+        'developers' => ['nullable', 'string', 'max:32'],
+        'directors' => ['nullable', 'string', 'max:32'],
+        'composer' => ['nullable', 'string', 'max:32'],
+    ];
 
 }

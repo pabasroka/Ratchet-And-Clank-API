@@ -17,13 +17,10 @@ class CreateGamesTable extends Migration
             $table->id();
             $table->string("title", 64);
             $table->string("subtitle", 64)->nullable();
-            $table->string("cover")->nullable();
-            $table->json("release");
-            $table->json("platforms");
-            $table->string("developers", 32);
+            $table->string("image")->nullable();
+            $table->string("developers", 32)->nullable();
             $table->string("directors", 32)->nullable();
             $table->string("composer", 32)->nullable();
-            $table->timestamps();
         });
     }
 

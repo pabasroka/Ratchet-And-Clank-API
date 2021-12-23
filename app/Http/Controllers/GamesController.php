@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreGamesRequest;
+use App\Http\Requests\GamesRequest;
 use App\Models\Games;
 use Illuminate\Http\Request;
 
@@ -26,21 +26,9 @@ class GamesController extends Controller
     }
 
     // POST
-    public function store(StoreGamesRequest $storeGamesRequest)
+    public function store(GamesRequest $request)
     {
-        $game = Games::create($storeGamesRequest->validated());
-
-//        if ($request->hasFile('cover')) {
-//            $destinationPath = 'public/storage/games';
-//            $image = $request->file('cover');
-//            $imageName = $image->getClientOriginalName();
-//            $imagePath = $request->file('cover')->storeAs($destinationPath, $imageName);
-//        }
-//
-//        $game = Games::create([
-//            'body' => $attrs['body'],
-//            'image' => $imagePath
-//        ]);
+        $game = Games::create($request->validated());
 
         return response([
             'game' => $game
