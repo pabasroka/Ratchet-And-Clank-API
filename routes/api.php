@@ -23,7 +23,6 @@ Route::group(['prefix'=> '/v1'], function () {
     Route::group(['prefix' => '/games'], function () {
         Route::get('/', [GamesController::class, 'index']);
         Route::get('/{id}', [GamesController::class, 'show']);
-        Route::post('/', [GamesController::class, 'store']);
     });
 
     // Releases

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\GamesController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -17,6 +18,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
-
-Route::get('/admin', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->withoutMiddleware(['auth'])->name('welcome');
+Route::get('/admin', [HomeController::class, 'admin']);
 Route::get('/logout', [LoginController::class, 'logout']);
+
+Route::resource('games', GamesController::class);
+Route::post('/games', [GamesController::class, 'store'])->name('games.store');
+//Route::group(['prefix' => '/games'], function () {
+//    Route::get('/', [GamesController::class, 'create']);
+//    Route::post('/', [GamesController::class, 'store']);
+//});

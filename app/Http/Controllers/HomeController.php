@@ -18,6 +18,11 @@ class HomeController extends Controller
 
     public function index(): Renderable
     {
+        return view('welcome');
+    }
+
+    public function admin(): Renderable
+    {
         return view('admin');
     }
 

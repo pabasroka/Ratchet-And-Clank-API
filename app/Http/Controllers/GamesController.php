@@ -42,6 +42,11 @@ class GamesController extends Controller
         ], 201);
     }
 
+    public function create()
+    {
+        return view('games.create');
+    }
+
     // temporary view
     public function welcome()
     {
