@@ -30,8 +30,11 @@ class GamesController extends Controller
     {
         $validated = $request->validated();
 
-        $newImageName = time() . '-' . $request->title . '.' . $request->image->extension();
-        $request->image->move(public_path('images'), $newImageName);
+        $newImageName = '';
+        if ($request->image) {
+            $newImageName = time() . '-' . $request->title . '.' . $request->image->extension();
+            $request->image->move(public_path('images'), $newImageName);
+        }
 
         $game = Games::create([
             'image' => $newImageName

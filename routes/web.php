@@ -22,9 +22,10 @@ Route::get('/', [HomeController::class, 'index'])->withoutMiddleware(['auth'])->
 Route::get('/admin', [HomeController::class, 'admin']);
 Route::get('/logout', [LoginController::class, 'logout']);
 
-Route::resource('games', GamesController::class);
-Route::post('/games', [GamesController::class, 'store'])->name('games.store');
-//Route::group(['prefix' => '/games'], function () {
-//    Route::get('/', [GamesController::class, 'create']);
-//    Route::post('/', [GamesController::class, 'store']);
-//});
+Route::group([
+    'prefix' => '/games',
+    'excluded_middleware' => ['auth']
+], function () {
+    Route::get('/', [GamesController::class, 'create'])->name('games.create');
+    Route::post('/', [GamesController::class, 'store'])->name('games.store');
+});
