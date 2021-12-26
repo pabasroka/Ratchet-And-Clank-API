@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Releases;
+use App\Models\Release;
 use Illuminate\Http\Request;
 
 class ReleasesController extends Controller
@@ -11,7 +11,7 @@ class ReleasesController extends Controller
     public function index()
     {
         return response([
-            'releases' => Releases::get()
+            'releases' => Release::get()
         ], 200);
     }
 

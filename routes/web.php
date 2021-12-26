@@ -28,4 +28,5 @@ Route::group([
 ], function () {
     Route::get('/', [GamesController::class, 'create'])->name('games.create');
     Route::post('/', [GamesController::class, 'store'])->name('games.store');
+    Route::put('/{id}', [GamesController::class, 'update'])->name('games.update');
 });

@@ -21,6 +21,7 @@ class CreateGamesTable extends Migration
             $table->string("developers", 32)->nullable();
             $table->string("directors", 32)->nullable();
             $table->string("composer", 32)->nullable();
+            $table->boolean('approve')->nullable()->default(0);
         });
     }
 

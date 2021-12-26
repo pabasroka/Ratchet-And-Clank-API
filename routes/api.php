@@ -19,18 +19,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix'=> '/v1'], function () {
 
-    // Games
+    // Game
     Route::group(['prefix' => '/games'], function () {
         Route::get('/', [GamesController::class, 'index']);
         Route::get('/{id}', [GamesController::class, 'show']);
     });
 
-    // Releases
+    // Release
     Route::group(['prefix' => '/releases'], function() {
         Route::get('/', [ReleasesController::class, 'index']);
     });
 
-    //Platforms
+    //Platform
     Route::group(['prefix' => '/platforms'], function() {
         Route::get('/', [PlatformsController::class, 'index']);
     });

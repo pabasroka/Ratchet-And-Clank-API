@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Game;
 use Illuminate\Contracts\Support\Renderable;
 
 class HomeController extends Controller
@@ -23,7 +24,8 @@ class HomeController extends Controller
 
     public function admin(): Renderable
     {
-        return view('admin');
+        $games = Game::where('approve', 0)->get();
+        return view('admin', ['games' => $games]);
     }
 
 }

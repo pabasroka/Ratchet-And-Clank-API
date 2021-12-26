@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Platforms;
+use App\Models\Platform;
 use Illuminate\Foundation\Http\FormRequest;
 
 class PlatformRequest extends FormRequest
@@ -24,6 +24,6 @@ class PlatformRequest extends FormRequest
      */
     public function rules()
     {
-        return Platforms::VALIDATION_RULES;
+        return Platform::VALIDATION_RULES;
     }
 }

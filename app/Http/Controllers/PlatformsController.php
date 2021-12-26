@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Platforms;
+use App\Models\Platform;
 use Illuminate\Http\Request;
 
 class PlatformsController extends Controller
@@ -10,7 +10,7 @@ class PlatformsController extends Controller
     public function index()
     {
         return response([
-            'platforms' => Platforms::get()
+            'platforms' => Platform::get()
         ], 200);
     }
 }

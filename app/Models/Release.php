@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Platforms extends Model
+class Release extends Model
 {
     use HasFactory;
 
@@ -13,6 +13,6 @@ class Platforms extends Model
 
     public const VALIDATION_RULES = [
         'game_id' => 'required|integer',
-        'platform' => 'string|max:8'
+        'release' => 'date'
     ];
 }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Releases;
+use App\Models\Release;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ReleasesRequest extends FormRequest
@@ -24,6 +24,6 @@ class ReleasesRequest extends FormRequest
      */
     public function rules()
     {
-        return Releases::VALIDATION_RULES;
+        return Release::VALIDATION_RULES;
     }
 }

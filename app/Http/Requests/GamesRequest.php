@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Games;
+use App\Models\Game;
 use Illuminate\Foundation\Http\FormRequest;
 
 class GamesRequest extends FormRequest
@@ -24,12 +24,12 @@ class GamesRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = Games::VALIDATION_RULES;
+        $rules = Game::VALIDATION_RULES;
 
         if ($this->getMethod() == 'POST') { // store
             // $rules += ['sth' => 'string'];
         } else { // update
-            // $rules += ['sth' => 'string'];
+//             $rules += ['approve' => 'boolean'];
         }
 
         return $rules;
