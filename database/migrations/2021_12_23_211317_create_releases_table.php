@@ -17,7 +17,7 @@ class CreateReleasesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('game_id');
             $table->string('region', 32);
-            $table->date('release');
+            $table->date('date');
         });
     }
 

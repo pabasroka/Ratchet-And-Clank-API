@@ -42,9 +42,62 @@
                             <option value="ps5">PlayStation 5</option>
                         </select>
                     </div>
+                    <div class="form-group">
+                        Releases:
+                        <div class="releases"></div>
+                        <button id="addRelease" type="button" class="btn btn-secondary">Add</button>
+                        <button id="removeRelease" type="button" class="btn btn-secondary">Remove</button>
+                    </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
         </div>
     </div>
+
+    <script>
+        let releases = document.querySelector('.releases')
+        let addRelease = document.querySelector('#addRelease')
+        let removeRelease = document.querySelector('#removeRelease')
+
+        addRelease.addEventListener('click', () => {
+            const switchElements = ["EU", "JP", "NA"]
+            let switchInput = document.createElement('select')
+            switchInput.setAttribute('type', 'switch')
+            switchInput.setAttribute('name', 'release')
+
+            for (let i = 0; i < switchElements.length; i++) {
+                let option = document.createElement('option')
+                option.value = switchElements[i]
+                option.text = switchElements[i]
+                switchInput.appendChild(option)
+            }
+
+            let dateInput = document.createElement('input')
+            dateInput.setAttribute('type', 'date')
+            dateInput.setAttribute('name', 'date')
+
+            let removeButton = document.createElement('button')
+            removeButton.setAttribute('type', 'button')
+            removeButton.setAttribute('name', 'removeRelease')
+            removeButton.setAttribute('class', 'btn btn-danger')
+            const text = document.createTextNode('Remove')
+            removeButton.appendChild(text)
+
+            const release = document.createElement('div')
+            release.setAttribute('class', 'release')
+
+            release.appendChild(dateInput)
+            release.appendChild(switchInput)
+            // release.appendChild(removeButton)
+            release.appendChild(document.createElement('br'))
+
+            releases.appendChild(release)
+        })
+
+        removeRelease.addEventListener('click', () => {
+            let releases = document.querySelector('.releases')
+            releases.innerHTML = ""
+        })
+
+    </script>
 @endsection
