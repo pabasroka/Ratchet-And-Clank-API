@@ -63,7 +63,7 @@
             const switchElements = ["EU", "JP", "NA"]
             let switchInput = document.createElement('select')
             switchInput.setAttribute('type', 'switch')
-            switchInput.setAttribute('name', 'release')
+            switchInput.setAttribute('name', 'region[]')
 
             for (let i = 0; i < switchElements.length; i++) {
                 let option = document.createElement('option')
@@ -74,7 +74,7 @@
 
             let dateInput = document.createElement('input')
             dateInput.setAttribute('type', 'date')
-            dateInput.setAttribute('name', 'date')
+            dateInput.setAttribute('name', 'date[]')
 
             let removeButton = document.createElement('button')
             removeButton.setAttribute('type', 'button')

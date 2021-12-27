@@ -13,7 +13,9 @@ class Release extends Model
 
     public const VALIDATION_RULES = [
         'game_id' => ['nullable', 'integer'],
-        'region' => ['nullable', 'string'],
-        'date' => ['nullable', 'date']
+        'region' => ['nullable', 'array'],
+        'region.*' => ['string'],
+        'date' => ['nullable', 'array'],
+        'date.*' => ['date']
     ];
 }

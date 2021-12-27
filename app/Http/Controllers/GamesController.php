@@ -7,6 +7,7 @@ use App\Http\Requests\GameRequest;
 use App\Http\Requests\PlatformRequest;
 use App\Models\Game;
 use App\Models\Platform;
+use App\Models\Release;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Contracts\View\Factory;
@@ -56,6 +57,7 @@ class GamesController extends Controller
     // POST
     public function store(GameFormRequest $request): Response|Application|ResponseFactory
     {
+        // Game
         $validated = $request->validated();
 
         $newImageName = '';
@@ -74,15 +76,29 @@ class GamesController extends Controller
                 'approve' => $approve,
             ] + $validated);
 
+
+        // Platform
         $platform = new Platform();
         $platform->game_id = $game->id;
         $platform->platform = $validated['platform'];
-
         $game->platforms()->save($platform);
+
+        // Releases
+        $releases = [];
+        $length = count($request['date']) ?? 0;
+        for ($i = 0; $i < $length; $i++) {
+            $release = new Release();
+            $release->game_id = $game->id;
+            $release->date = $request['date'][$i];
+            $release->region = $request['region'][$i];
+            $releases[] = $release;
+            $game->releases()->save($release);
+        }
 
         return response([
             'game' => $game,
-            'platform' => $platform
+            'platform' => $platform,
+            'releases' => $releases
         ], 201);
     }
 
