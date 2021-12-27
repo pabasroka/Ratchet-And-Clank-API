@@ -13,7 +13,8 @@ class PlatformsController extends Controller
     public function index(): Response|Application|ResponseFactory
     {
         return response([
-            'platforms' => Platform::get()
+            'platforms' => Platform::where('approve', 0)
+                ->get()
         ], 200);
     }
 }

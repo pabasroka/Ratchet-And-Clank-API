@@ -5,18 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Release extends Model
+class Race extends Model
 {
     use HasFactory;
 
     public $timestamps = false;
 
+    public $fillable = [
+        'name'
+    ];
+
     public const VALIDATION_RULES = [
-        'game_id' => ['nullable', 'integer'],
-        'region' => ['nullable', 'array'],
-        'region.*' => ['string'],
-        'date' => ['nullable', 'array'],
-        'date.*' => ['date'],
+        'name' => ['required', 'string', 'max:32'],
         'approve' => ['boolean', 'nullable']
     ];
 }

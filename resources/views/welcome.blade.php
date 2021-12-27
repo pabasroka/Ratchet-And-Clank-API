@@ -10,9 +10,9 @@
                 Dodaj nową grę
                 <a href="{{ route('games.create') }}">Dodaj</a>
 <br/>
-                Dodaj nową broń
-{{--                <a href="{{ route('weapons.create') }}">Dodaj</a>--}}
-                </br>itd...
+                Dodaj rasę
+                <a href="{{ route('race.create') }}">Dodaj</a>
+
 
             </div>
         </div>

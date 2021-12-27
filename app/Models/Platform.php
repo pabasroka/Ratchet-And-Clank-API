@@ -14,5 +14,6 @@ class Platform extends Model
     public const VALIDATION_RULES = [
         'game_id' => ['nullable', 'integer'],
         'platform' => ['nullable', 'string', 'max:8'],
+        'approve' => ['boolean', 'nullable']
     ];
 }
