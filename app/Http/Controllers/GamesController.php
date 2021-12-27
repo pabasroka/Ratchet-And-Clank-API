@@ -102,7 +102,7 @@ class GamesController extends Controller
         ], 201);
     }
 
-    public function update(GameRequest $request, $id): Response|Redirector|RedirectResponse|Application|ResponseFactory
+    public function update(GameFormRequest $request, $id): Response|Redirector|RedirectResponse|Application|ResponseFactory
     {
         $game = Game::findOrFail($id);
 
@@ -128,6 +128,24 @@ class GamesController extends Controller
                 'image' => $newImageName,
                 'approve' => $approve
             ] + $validated);
+
+        // Platform
+        $platform = Platform::where('game_id', $game->id)->firstOrFail();
+        $platform->platform = $validated['platform'];
+        $platform->approve = $approve;
+        $game->platforms()->save($platform);
+
+        // Releases TODO cannot change date
+        $length = count($request['date']) ?? 0;
+        for ($i = 0; $i < $length; $i++) {
+            $release = Release::where('game_id', $game->id)->get();
+            $release->date = $request['date'][$i];
+            $release->region = $request['region'][$i];
+            foreach ($release as $r) {
+                $r->approve = $approve;
+                $game->releases()->save($r);
+            }
+        }
 
         return redirect('/admin')->with('message', 'Game updated successfully');
     }

@@ -44,7 +44,14 @@
                     </div>
                     <div class="form-group">
                         Releases:
-                        <div class="releases"></div>
+                        <div class="releases">
+                            <input type="date" name="date[]" required>
+                            <select name="region[]" id="region">
+                                <option value="EU">EU</option>
+                                <option value="JP">JP</option>
+                                <option value="NA">NA</option>
+                            </select>
+                        </div>
                         <button id="addRelease" type="button" class="btn btn-secondary">Add</button>
                         <button id="removeRelease" type="button" class="btn btn-secondary">Remove</button>
                     </div>
@@ -63,6 +70,7 @@
             const switchElements = ["EU", "JP", "NA"]
             let switchInput = document.createElement('select')
             switchInput.setAttribute('type', 'switch')
+            switchInput.setAttribute("required", "")
             switchInput.setAttribute('name', 'region[]')
 
             for (let i = 0; i < switchElements.length; i++) {
@@ -74,6 +82,7 @@
 
             let dateInput = document.createElement('input')
             dateInput.setAttribute('type', 'date')
+            dateInput.setAttribute("required", "")
             dateInput.setAttribute('name', 'date[]')
 
             let removeButton = document.createElement('button')

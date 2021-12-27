@@ -17,6 +17,7 @@ class CreatePlatformsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('game_id');
             $table->enum('platform', ['PS2', 'PSP', 'PS3', 'PSVita', 'PS4', 'PS5']);
+            $table->boolean('approve')->nullable()->default(0);
         });
     }
 

@@ -18,6 +18,7 @@ class CreateReleasesTable extends Migration
             $table->unsignedBigInteger('game_id');
             $table->string('region', 32);
             $table->date('date');
+            $table->boolean('approve')->nullable()->default(0);
         });
     }
 
