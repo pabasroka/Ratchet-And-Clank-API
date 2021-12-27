@@ -27,8 +27,10 @@
                             <label for="title">subtitle</label>
                             <input type="text" class="form-control" id="subtitle" name="subtitle" value="{{ $game->subtitle }}">
                         </div>
+                        {{ $game->image }}
                         <div class="form-group">
                             <label for="image">image</label>
+                            <img src="{{ asset('images/' . $game->image)  }}" width="100" alt="image">
                             <input type="file" class="form-control" id="image" name="image" value="{{ $game->image }}">
                         </div>
                         <div class="form-group">

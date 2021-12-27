@@ -92,7 +92,7 @@ class GamesController extends Controller
             $approve = 1;
         }
 
-        $newImageName = '';
+        $newImageName = $game->image ?? '';
         if ($request->image) {
             $newImageName = time() . '-' . $request->title . '.' . $request->image->extension();
             $request->image->move(public_path('images'), $newImageName);
