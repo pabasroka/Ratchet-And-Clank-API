@@ -12,7 +12,7 @@ class Platform extends Model
     public $timestamps = false;
 
     public const VALIDATION_RULES = [
-        'game_id' => 'required|integer',
-        'platform' => 'string|max:8'
+        'game_id' => ['nullable', 'integer'],
+        'platform' => ['nullable', 'string', 'max:8'],
     ];
 }

@@ -12,7 +12,8 @@ class Release extends Model
     public $timestamps = false;
 
     public const VALIDATION_RULES = [
-        'game_id' => 'required|integer',
-        'release' => 'date'
+        'game_id' => ['nullable', 'integer'],
+        'region' => ['nullable', 'string'],
+        'release' => ['nullable', 'date']
     ];
 }

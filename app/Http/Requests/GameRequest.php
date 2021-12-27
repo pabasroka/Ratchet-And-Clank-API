@@ -3,9 +3,10 @@
 namespace App\Http\Requests;
 
 use App\Models\Game;
+use App\Models\Platform;
 use Illuminate\Foundation\Http\FormRequest;
 
-class GamesRequest extends FormRequest
+class GameRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

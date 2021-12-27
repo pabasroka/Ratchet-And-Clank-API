@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use App\Models\Release;
 use Illuminate\Foundation\Http\FormRequest;
 
-class ReleasesRequest extends FormRequest
+class ReleaseRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\GamesRequest;
+use App\Http\Requests\GameFormRequest;
+use App\Http\Requests\GameRequest;
+use App\Http\Requests\PlatformRequest;
 use App\Models\Game;
+use App\Models\Platform;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Contracts\View\Factory;
@@ -51,7 +54,7 @@ class GamesController extends Controller
     }
 
     // POST
-    public function store(GamesRequest $request): Response|Application|ResponseFactory
+    public function store(GameFormRequest $request): Response|Application|ResponseFactory
     {
         $validated = $request->validated();
 
@@ -71,12 +74,19 @@ class GamesController extends Controller
                 'approve' => $approve,
             ] + $validated);
 
+        $platform = new Platform();
+        $platform->game_id = $game->id;
+        $platform->platform = $validated['platform'];
+
+        $game->platforms()->save($platform);
+
         return response([
-            'game' => $game
+            'game' => $game,
+            'platform' => $platform
         ], 201);
     }
 
-    public function update(GamesRequest $request, $id): Response|Redirector|RedirectResponse|Application|ResponseFactory
+    public function update(GameRequest $request, $id): Response|Redirector|RedirectResponse|Application|ResponseFactory
     {
         $game = Game::findOrFail($id);
 
