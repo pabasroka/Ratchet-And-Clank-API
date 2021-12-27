@@ -10,6 +10,7 @@ class Race extends Model
     use HasFactory;
 
     public $timestamps = false;
+
     public $fillable = [
         'name'
     ];
