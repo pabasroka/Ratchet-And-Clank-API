@@ -15,7 +15,11 @@ class CreatePlantesTable extends Migration
     {
         Schema::create('plantes', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->unsignedBigInteger('galaxy_id');
+            $table->string('name', 32);
+            $table->string('description', 500)->nullable();
+            $table->string("image")->nullable();
+            $table->boolean('approve')->nullable()->default(0);
         });
     }
 

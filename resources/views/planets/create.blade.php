@@ -13,8 +13,28 @@
                     @csrf
 
                     <div class="form-group">
-                        <label for="name">Name</label>
+                        <label for="name">Name: </label>
                         <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="galaxy">Galaxy: </label>
+                        <select name="galaxy_id" id="galaxy_id">
+                            @foreach($galaxies as $galaxy)
+                                <option value="{{ $galaxy->id }}">{{ $galaxy->name }}</option>
+                            @endforeach
+                        </select>
+                        <a href="{{ route('galaxies.create') }}">Add new galaxy (jump into galaxy form)</a>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Description: </label>
+                        <textarea name="description" id="description" cols="70" rows="7" maxlength="500" placeholder="Short description about planet"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="image">Image: </label>
+                        <input type="file" class="form-control" id="image" name="image">
                     </div>
 
                     <button type="submit" class="btn btn-primary">Submit</button>

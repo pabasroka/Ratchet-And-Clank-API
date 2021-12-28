@@ -6,8 +6,14 @@
             <div class="col-md-8">
 
                 <div class="p-5 text-center">
-                    <h1 class="mb-3">Add game 🎮</h1>
+                    <h1 class="mb-3">Add Game 🎮</h1>
                 </div>
+
+                @if(session()->has('message'))
+                    <div class="alert alert-success">
+                        {{ session('message') }}
+                    </div>
+                @endif
 
                 <form method="post" action="{{ route('games.store') }}" enctype="multipart/form-data">
                     @csrf
