@@ -24,6 +24,7 @@ class GamesController extends Controller
     public function index(): Response|Application|ResponseFactory
     {
         $games = Game::where('approve', 1)
+            ->with('skillpoints:id,name,description,game_id,planet_id')
             ->get();
 
         foreach ($games as $game) {
@@ -44,6 +45,8 @@ class GamesController extends Controller
         $game = Game::where('id', $id)
             ->where('approve', 1)
             ->get();
+
+        $game->makeHidden('approve')->toArray();
 
         if ($game[0]->image) {
             $game[0]->image = public_path('images/' . $game[0]->image);

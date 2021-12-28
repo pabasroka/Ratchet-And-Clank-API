@@ -4,12 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Game extends Model
 {
     use HasFactory;
 
-    protected $with = ['releases', 'platforms'];
+    protected $with = ['releases', 'platforms', 'skillpoints'];
 
     protected $fillable = [
         'title',
@@ -20,10 +21,6 @@ class Game extends Model
         'composer',
         'approve'
     ];
-
-//    protected $hidden = [
-//        'approve'
-//    ];
 
     public $timestamps = false;
 
@@ -38,12 +35,18 @@ class Game extends Model
     ];
 
     // Relationships
-    public function releases() {
+    public function releases(): HasMany
+    {
         return $this->hasMany(Release::class, 'game_id', 'id');
     }
 
-    public function platforms() {
+    public function platforms(): HasMany
+    {
         return $this->hasMany(Platform::class, 'game_id', 'id');
+    }
+
+    public function skillpoints() {
+        return $this->hasMany(SkillPoint::class, 'game_id', 'id');
     }
 
 }
