@@ -24,6 +24,15 @@ class PlanetRequest extends FormRequest
      */
     public function rules()
     {
-        return Planet::VALIDATION_RULES;
+        $rules = Planet::VALIDATION_RULES;
+
+        if ($this->getMethod() == 'POST') { // store
+            $rules += ['galaxy_id' => ['integer']];
+            $rules += ['name' => ['required', 'string', 'max:32']];
+            $rules += ['description' => ['nullable', 'string', 'max:500']];
+            $rules += ['image' => ['nullable', 'image', 'max:5048']];
+        }
+
+        return $rules;
     }
 }

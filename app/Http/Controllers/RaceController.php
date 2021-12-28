@@ -56,7 +56,7 @@ class RaceController extends Controller
         return redirect()->route('races.create')->with('message', 'Race created successfully');
     }
 
-    public function update(RaceRequest $request, $id)
+    public function update(RaceRequest $request, $id): Response|RedirectResponse|Application|ResponseFactory
     {
         $race = Race::findOrFail($id);
 
@@ -79,7 +79,7 @@ class RaceController extends Controller
         return redirect()->route('races.edit')->with('message', 'Race updated successfully');
     }
 
-    public function destroy($id)
+    public function destroy($id): RedirectResponse
     {
         $race = Race::findOrFail($id);
         $race->delete();

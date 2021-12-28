@@ -14,21 +14,14 @@ class Planet extends Model
     public $timestamps = false;
 
     public $fillable = [
+        'galaxy_id',
         'name',
         'description',
         'image',
         'approve'
     ];
 
-    protected $hidden = [
-        'galaxy_id',
-    ];
-
     public const VALIDATION_RULES = [
-        'galaxy_id' => ['integer'],
-        'name' => ['required', 'string', 'max:32'],
-        'description' => ['nullable', 'string', 'max:500'],
-        'image'  => ['nullable', 'image', 'max:5048'],
         'approve' => ['boolean', 'nullable']
     ];
 }

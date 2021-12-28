@@ -51,4 +51,7 @@ Route::group(['prefix' => '/galaxies'], function () {
 Route::group(['prefix' => '/planets'], function () {
     Route::get('/', [PlanetController::class, 'create'])->withoutMiddleware(['auth'])->name('planets.create');
     Route::post('/', [PlanetController::class, 'store'])->withoutMiddleware(['auth'])->name('planets.store');
+    Route::get('/edit', [PlanetController::class, 'edit'])->name('planets.edit');
+    Route::put('/{id}', [PlanetController::class, 'update'])->name('planets.update');
+    Route::delete('/{id}', [PlanetController::class, 'destroy'])->name('planets.destroy');
 });

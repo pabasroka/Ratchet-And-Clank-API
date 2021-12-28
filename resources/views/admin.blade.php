@@ -18,14 +18,14 @@
                     </li>
                     <li style="text-align: center; font-size: 30px" class="list-group-item bg-secondary">
                         <a href="{{ route('galaxies.edit') }}" class="text-white">
-                            🌌 Add Galaxy 🌌
+                            🌌 Update Galaxy 🌌
                         </a>
                     </li>
-{{--                    <li style="text-align: center; font-size: 30px" class="list-group-item bg-secondary">--}}
-{{--                        <a href="{{ route('planets.edit') }}" class="text-white">--}}
-{{--                            🌍 Add Planet 🌍--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
+                    <li style="text-align: center; font-size: 30px" class="list-group-item bg-secondary">
+                        <a href="{{ route('planets.edit') }}" class="text-white">
+                            🌍 Update Planet 🌍
+                        </a>
+                    </li>
 {{--                    <li style="text-align: center; font-size: 30px" class="list-group-item bg-secondary">--}}
 {{--                        <a href="" class="text-white">--}}
 {{--                            🔫 Add Weapon 🔫--}}

@@ -17,7 +17,6 @@ class Race extends Model
     ];
 
     public const VALIDATION_RULES = [
-
         'approve' => ['boolean', 'nullable']
     ];
 }
