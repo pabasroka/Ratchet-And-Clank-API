@@ -6,13 +6,13 @@
             <div class="col-md-8">
 
                 <ul class="list-group list-group-flush">
-                    <li style="text-align: center; font-size: 30px" class="list-group-item">
-                        <a href="{{ route('games.edit') }}">
+                    <li style="text-align: center; font-size: 30px" class="list-group-item bg-secondary">
+                        <a href="{{ route('games.edit') }}" class="text-white">
                             🎮 Update Game 🎮
                         </a>
                     </li>
-                    <li style="text-align: center; font-size: 30px" class="list-group-item">
-                        <a href="{{ route('races.edit') }}">
+                    <li style="text-align: center; font-size: 30px" class="list-group-item bg-secondary">
+                        <a href="{{ route('races.edit') }}" class="text-white">
                             👽 Update Race 👽
                         </a>
                     </li>

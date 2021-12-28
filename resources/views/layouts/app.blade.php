@@ -23,26 +23,26 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-dark shadow-sm">
             <div class="container">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto">
                         @auth
-                            <a class="nav-item nav-link" href="{{ route('logout') }}">Wyloguj się</a>
-                            <a class="nav-item nav-link" href="{{ route('admin') }}">Admin panel</a>
+                            <a class="nav-item nav-link text-light" href="{{ route('logout') }}">Wyloguj się</a>
+                            <a class="nav-item nav-link text-light" href="{{ route('admin') }}">Admin panel</a>
                         @endauth
                         @guest
                             @if (Route::has('login'))
-                                <a class="nav-item nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-item nav-link text-light" href="{{ route('login') }}">{{ __('Login') }}</a>
                             @endif
                         @endguest
-                        <a class="nav-item nav-link" href="{{ route('welcome') }}">{{ __('Main') }}</a>
+                        <a class="nav-item nav-link text-light" href="{{ route('welcome') }}">{{ __('Main') }}</a>
                     </ul>
                 </div>
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-4 bg-secondary min-vh-100">
             @yield('content')
         </main>
     </div>
