@@ -14,8 +14,19 @@ class ReleasesController extends Controller
     public function index(): Response|Application|ResponseFactory
     {
         return response([
-            'releases' => Release::where('approve', 0)
+            'releases' => Release::where('approve', 1)
                 ->get()
+        ], 200);
+    }
+
+    public function show($id): Response|Application|ResponseFactory
+    {
+        $release = Release::where('id', $id)
+            ->where('approve', 1)
+            ->get();
+
+        return response([
+            'release' => $release
         ], 200);
     }
 

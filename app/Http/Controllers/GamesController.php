@@ -39,7 +39,7 @@ class GamesController extends Controller
     }
 
     // GET BY ID
-    public function show($id)
+    public function show($id): Response|Application|ResponseFactory
     {
         $game = Game::where('id', $id)
             ->where('approve', 1)

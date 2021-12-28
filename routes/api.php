@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\GalaxyController;
 use App\Http\Controllers\GamesController;
 use App\Http\Controllers\PlatformsController;
+use App\Http\Controllers\RaceController;
 use App\Http\Controllers\ReleasesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -19,31 +21,43 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix'=> '/v1'], function () {
 
-    // Game
+    // Games
     Route::group(['prefix' => '/games'], function () {
         Route::get('/', [GamesController::class, 'index']);
         Route::get('/{id}', [GamesController::class, 'show']);
     });
 
-    // Release
+    // Releases
     Route::group(['prefix' => '/releases'], function() {
         Route::get('/', [ReleasesController::class, 'index']);
+        Route::get('/{id}', [ReleasesController::class, 'show']);
     });
 
-    //Platform
+    // Platforms
     Route::group(['prefix' => '/platforms'], function() {
         Route::get('/', [PlatformsController::class, 'index']);
+        Route::get('/{id}', [PlatformsController::class, 'show']);
     });
+
+    // Races
+    Route::group(['prefix' => '/races'], function() {
+        Route::get('/', [RaceController::class, 'index']);
+        Route::get('/{id}', [RaceController::class, 'show']);
+    });
+
+    // Galaxies
+    Route::group(['prefix' => '/galaxies'], function() {
+        Route::get('/', [GalaxyController::class, 'index']);
+        Route::get('/{id}', [GalaxyController::class, 'show']);
+    });
+
+    // Planets
 
     // Characters
 
     // Weapons
 
     // Gadgets
-
-    // Galaxies
-
-    // Planets
 
     // Enemies
 

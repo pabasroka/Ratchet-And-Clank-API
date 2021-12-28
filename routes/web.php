@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\GalaxyController;
 use App\Http\Controllers\GamesController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RaceController;
@@ -20,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->withoutMiddleware(['auth'])->name('welcome');
-Route::get('/admin', [HomeController::class, 'admin']);
+Route::get('/admin', [HomeController::class, 'admin'])->name('admin');
 Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::group(['prefix' => '/games'], function () {
@@ -29,7 +30,12 @@ Route::group(['prefix' => '/games'], function () {
     Route::put('/{id}', [GamesController::class, 'update'])->name('games.update');
 });
 
-Route::group(['prefix' => '/race'], function () {
-    Route::get('/', [RaceController::class, 'create'])->withoutMiddleware(['auth'])->name('race.create');
-    Route::post('/', [RaceController::class, 'store'])->withoutMiddleware(['auth'])->name('race.store');
+Route::group(['prefix' => '/races'], function () {
+    Route::get('/', [RaceController::class, 'create'])->withoutMiddleware(['auth'])->name('races.create');
+    Route::post('/', [RaceController::class, 'store'])->withoutMiddleware(['auth'])->name('races.store');
+});
+
+Route::group(['prefix' => '/galaxies'], function () {
+    Route::get('/', [GalaxyController::class, 'create'])->withoutMiddleware(['auth'])->name('galaxies.create');
+    Route::post('/', [GalaxyController::class, 'store'])->withoutMiddleware(['auth'])->name('galaxies.store');
 });

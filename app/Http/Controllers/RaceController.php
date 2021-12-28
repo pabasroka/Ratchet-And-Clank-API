@@ -17,8 +17,19 @@ class RaceController extends Controller
     public function index(): Response|Application|ResponseFactory
     {
         return response([
-            'race' => Race::where('approve', 0)
+            'races' => Race::where('approve', 1)
                 ->get()
+        ], 200);
+    }
+
+    public function show($id): Response|Application|ResponseFactory
+    {
+        $race = Race::where('id', $id)
+            ->where('approve', 1)
+            ->get();
+
+        return response([
+            'race' => $race
         ], 200);
     }
 
@@ -36,12 +47,12 @@ class RaceController extends Controller
             ] + $validated);
 
         return response([
-            'race' => $race
+            'races' => $race
         ], 201);
     }
 
     public function create(): Factory|View|Application
     {
-        return view('race.create');
+        return view('races.create');
     }
 }

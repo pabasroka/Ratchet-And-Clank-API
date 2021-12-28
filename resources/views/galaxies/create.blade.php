@@ -4,7 +4,12 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <form method="post" action="{{ route('race.store') }}" enctype="multipart/form-data">
+
+                <div class="p-5 text-center">
+                    <h1 class="mb-3">Add galaxy 🌌</h1>
+                </div>
+
+                <form method="post" action="{{ route('galaxies.store') }}" enctype="multipart/form-data">
                     @csrf
 
                     <div class="form-group">
@@ -17,5 +22,4 @@
             </div>
         </div>
     </div>
-
 @endsection
