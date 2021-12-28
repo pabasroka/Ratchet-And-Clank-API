@@ -4,10 +4,10 @@
 
 A RESTful API for Ratchet & Clank - [ratchetclankapi.com](https://..)
 
-##Documentation
+## Documentation
 there will be more information in the future
 
-##Licence
+## Licence
 
-##Contributor
+## Contributor
 just me :')
