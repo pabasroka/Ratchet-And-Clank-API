@@ -11,6 +11,11 @@ class Platform extends Model
 
     public $timestamps = false;
 
+    protected $hidden = [
+        'game_id',
+        'approve',
+    ];
+
     public const VALIDATION_RULES = [
         'game_id' => ['nullable', 'integer'],
         'platform' => ['nullable', 'string', 'max:8'],

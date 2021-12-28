@@ -11,13 +11,16 @@ class Game extends Model
 
     protected $with = ['releases', 'platforms'];
 
-    protected $fillable =[
+    protected $fillable = [
         'title',
         'subtitle',
         'image',
         'developers',
         'directors',
         'composer',
+    ];
+
+    protected $hidden = [
         'approve'
     ];
 

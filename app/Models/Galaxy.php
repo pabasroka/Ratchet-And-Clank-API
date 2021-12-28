@@ -18,6 +18,10 @@ class Galaxy extends Model
         'approve'
     ];
 
+    protected $hidden = [
+        'approve'
+    ];
+
     public const VALIDATION_RULES = [
         'name' => ['required', 'string', 'max:32'],
         'approve' => ['boolean', 'nullable']

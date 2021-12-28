@@ -11,6 +11,11 @@ class Release extends Model
 
     public $timestamps = false;
 
+    protected $hidden = [
+        'game_id',
+        'approve',
+    ];
+
     public const VALIDATION_RULES = [
         'game_id' => ['nullable', 'integer'],
         'region' => ['nullable', 'array'],
