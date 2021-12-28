@@ -43,6 +43,9 @@ Route::group(['prefix' => '/races'], function () {
 Route::group(['prefix' => '/galaxies'], function () {
     Route::get('/', [GalaxyController::class, 'create'])->withoutMiddleware(['auth'])->name('galaxies.create');
     Route::post('/', [GalaxyController::class, 'store'])->withoutMiddleware(['auth'])->name('galaxies.store');
+    Route::get('/edit', [GalaxyController::class, 'edit'])->name('galaxies.edit');
+    Route::put('/{id}', [GalaxyController::class, 'update'])->name('galaxies.update');
+    Route::delete('/{id}', [GalaxyController::class, 'destroy'])->name('galaxies.destroy');
 });
 
 Route::group(['prefix' => '/planets'], function () {

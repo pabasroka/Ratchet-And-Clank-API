@@ -49,8 +49,44 @@ class GalaxyController extends Controller
         return redirect('/galaxies')->with('message', 'Galaxy created successfully');
     }
 
+    public function update(GalaxyRequest $request, $id)
+    {
+        $galaxy = Galaxy::findOrFail($id);
+
+        if (!$galaxy) {
+            return response([
+                'message' => 'Galaxy not found'
+            ], 403);
+        }
+
+        $validated = $request->validated();
+        $approve = 0;
+        if (isset($validated['approve'])) {
+            $approve = 1;
+        }
+
+        $galaxy->update([
+                'approve' => $approve
+            ] + $validated);
+
+        return redirect()->route('galaxies.edit')->with('message', 'Galaxy updated successfully');
+    }
+
     public function create(): Factory|View|Application
     {
         return view('galaxies.create');
+    }
+
+    public function edit(): Factory|View|Application
+    {
+        $galaxies = Galaxy::where('approve', 0)->get();
+        return view('galaxies.edit', ['galaxies' => $galaxies]);
+    }
+
+    public function destroy($id)
+    {
+        $galaxy = Galaxy::findOrFail($id);
+        $galaxy->delete();
+        return redirect()->route('galaxies.edit')->with('message', 'Galaxy deleted successfully');
     }
 }

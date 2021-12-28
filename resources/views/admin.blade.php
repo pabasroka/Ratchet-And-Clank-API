@@ -16,43 +16,43 @@
                             👽 Update Race 👽
                         </a>
                     </li>
-{{--                    <li style="text-align: center; font-size: 30px" class="list-group-item">--}}
-{{--                        <a href="{{ route('galaxies.edit') }}">--}}
-{{--                            🌌 Add Galaxy 🌌--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
-{{--                    <li style="text-align: center; font-size: 30px" class="list-group-item">--}}
-{{--                        <a href="{{ route('planets.edit') }}">--}}
+                    <li style="text-align: center; font-size: 30px" class="list-group-item bg-secondary">
+                        <a href="{{ route('galaxies.edit') }}" class="text-white">
+                            🌌 Add Galaxy 🌌
+                        </a>
+                    </li>
+{{--                    <li style="text-align: center; font-size: 30px" class="list-group-item bg-secondary">--}}
+{{--                        <a href="{{ route('planets.edit') }}" class="text-white">--}}
 {{--                            🌍 Add Planet 🌍--}}
 {{--                        </a>--}}
 {{--                    </li>--}}
-{{--                    <li style="text-align: center; font-size: 30px" class="list-group-item">--}}
-{{--                        <a href="">--}}
+{{--                    <li style="text-align: center; font-size: 30px" class="list-group-item bg-secondary">--}}
+{{--                        <a href="" class="text-white">--}}
 {{--                            🔫 Add Weapon 🔫--}}
 {{--                        </a>--}}
 {{--                    </li>--}}
-{{--                    <li style="text-align: center; font-size: 30px" class="list-group-item">--}}
-{{--                        <a href="">--}}
+{{--                    <li style="text-align: center; font-size: 30px" class="list-group-item bg-secondary">--}}
+{{--                        <a href="" class="text-white">--}}
 {{--                            🧰 Add Gadget 🧰--}}
 {{--                        </a>--}}
 {{--                    </li>--}}
-{{--                    <li style="text-align: center; font-size: 30px" class="list-group-item">--}}
-{{--                        <a href="">--}}
+{{--                    <li style="text-align: center; font-size: 30px" class="list-group-item bg-secondary">--}}
+{{--                        <a href="" class="text-white">--}}
 {{--                            👾 Add Enemy 👾--}}
 {{--                        </a>--}}
 {{--                    </li>--}}
-{{--                    <li style="text-align: center; font-size: 30px" class="list-group-item">--}}
-{{--                        <a href="">--}}
+{{--                    <li style="text-align: center; font-size: 30px" class="list-group-item bg-secondary">--}}
+{{--                        <a href="" class="text-white">--}}
 {{--                            🏭 Add Organization 🏭--}}
 {{--                        </a>--}}
 {{--                    </li>--}}
-{{--                    <li style="text-align: center; font-size: 30px" class="list-group-item">--}}
-{{--                        <a href="">--}}
+{{--                    <li style="text-align: center; font-size: 30px" class="list-group-item bg-secondary">--}}
+{{--                        <a href="" class="text-white">--}}
 {{--                            🚀 Add Vehicles 🚀--}}
 {{--                        </a>--}}
 {{--                    </li>--}}
-{{--                    <li style="text-align: center; font-size: 30px" class="list-group-item">--}}
-{{--                        <a href="">--}}
+{{--                    <li style="text-align: center; font-size: 30px" class="list-group-item bg-secondary">--}}
+{{--                        <a href="" class="text-white">--}}
 {{--                            🏆 Add Skill Point 🏆--}}
 {{--                        </a>--}}
 {{--                    </li>--}}

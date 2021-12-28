@@ -22,8 +22,14 @@ class GalaxyRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
-        return Galaxy::VALIDATION_RULES;
+        $rules = Galaxy::VALIDATION_RULES;
+
+        if ($this->getMethod() == 'POST') { // store
+            $rules += ['name' => ['required', 'string', 'max:32']];
+        }
+
+        return $rules;
     }
 }
