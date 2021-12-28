@@ -14,6 +14,7 @@
                 @endif
 
                 @foreach ($games as $game)
+                    <hr/>
                     <form action="{{ route('games.update', $game->id) }}" method="POST" enctype="multipart/form-data" style="padding-top: 50px">
                         @csrf
                         @method('PUT')
@@ -78,9 +79,7 @@
                         {{ $game }}<br/>
                         <button type="submit" class="btn btn-success">Update</button>
                     </form>
-                    <hr/>
                 @endforeach
-
             </div>
         </div>
     </div>

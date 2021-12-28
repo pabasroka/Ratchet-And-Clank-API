@@ -12,7 +12,8 @@ class Race extends Model
     public $timestamps = false;
 
     public $fillable = [
-        'name'
+        'name',
+        'approve'
     ];
 
     public const VALIDATION_RULES = [

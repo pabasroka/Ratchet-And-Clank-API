@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Galaxy;
 use Illuminate\Foundation\Http\FormRequest;
 
 class GalaxyRequest extends FormRequest
@@ -13,7 +14,7 @@ class GalaxyRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +24,6 @@ class GalaxyRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
-        ];
+        return Galaxy::VALIDATION_RULES;
     }
 }

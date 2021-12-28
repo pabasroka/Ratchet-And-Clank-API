@@ -81,6 +81,7 @@ class GamesController extends Controller
         $platform = new Platform();
         $platform->game_id = $game->id;
         $platform->platform = $validated['platform'];
+        $platform->approve = $approve;
         $game->platforms()->save($platform);
 
         // Releases
@@ -91,6 +92,7 @@ class GamesController extends Controller
             $release->game_id = $game->id;
             $release->date = $request['date'][$i];
             $release->region = $request['region'][$i];
+            $release->approve = $approve;
             $releases[] = $release;
             $game->releases()->save($release);
         }

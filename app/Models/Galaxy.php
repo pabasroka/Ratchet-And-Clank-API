@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Galaxy extends Model
 {
     use HasFactory;
+
+    public $timestamps = false;
+
+    public $fillable = [
+        'name',
+        'approve'
+    ];
+
+    public const VALIDATION_RULES = [
+        'name' => ['required', 'string', 'max:32'],
+        'approve' => ['boolean', 'nullable']
+    ];
 }
