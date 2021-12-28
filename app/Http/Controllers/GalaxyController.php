@@ -16,9 +16,12 @@ class GalaxyController extends Controller
 {
     public function index(): Response|Application|ResponseFactory
     {
+        $galaxies = Galaxy::where('approve', 1)
+            ->get();
+        $galaxies->makeHidden('approve')->toArray();
+
         return response([
-            'galaxies' => Galaxy::where('approve', 1)
-                ->get()
+            'galaxies' => $galaxies
         ], 200);
     }
 
@@ -27,6 +30,7 @@ class GalaxyController extends Controller
         $galaxy = Galaxy::where('id', $id)
             ->where('approve', 1)
             ->get();
+        $galaxy->makeHidden('approve')->toArray();
 
         return response([
             'galaxy' => $galaxy
