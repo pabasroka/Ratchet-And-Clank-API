@@ -28,6 +28,7 @@ Route::get('/logout', [LoginController::class, 'logout']);
 Route::group(['prefix' => '/games'], function () {
     Route::get('/', [GamesController::class, 'create'])->withoutMiddleware(['auth'])->name('games.create');
     Route::post('/', [GamesController::class, 'store'])->withoutMiddleware(['auth'])->name('games.store');
+    Route::get('/edit', [GamesController::class, 'edit'])->name('games.edit');
     Route::put('/{id}', [GamesController::class, 'update'])->name('games.update');
 });
 

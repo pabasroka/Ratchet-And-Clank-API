@@ -18,11 +18,12 @@ class Game extends Model
         'developers',
         'directors',
         'composer',
-    ];
-
-    protected $hidden = [
         'approve'
     ];
+
+//    protected $hidden = [
+//        'approve'
+//    ];
 
     public $timestamps = false;
 

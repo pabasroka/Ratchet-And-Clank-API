@@ -145,13 +145,20 @@ class GamesController extends Controller
             }
         }
 
-        return redirect('/admin')->with('message', 'Game updated successfully');
+        return redirect()->route('games.edit')->with('message', 'Game updated successfully');
     }
 
     // VIEWS
     public function create(): Factory|View|Application
     {
-        return view('games.create');
+        return view('games.edit');
+    }
+
+    public function edit(): Factory|View|Application
+    {
+        $games = Game::where('approve', 0)
+            ->get();
+        return view('games.edit', ['games' => $games]);
     }
 
     // temporary view
