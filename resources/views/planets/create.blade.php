@@ -28,7 +28,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="description">Description: </label>
+                        <label for="description">Description: </label><br>
                         <textarea name="description" id="description" cols="70" rows="7" maxlength="500" placeholder="Short description about planet"></textarea>
                     </div>
 

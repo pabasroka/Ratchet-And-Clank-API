@@ -51,11 +51,11 @@
 {{--                            🚀 Add Vehicles 🚀--}}
 {{--                        </a>--}}
 {{--                    </li>--}}
-{{--                    <li style="text-align: center; font-size: 30px" class="list-group-item bg-secondary">--}}
-{{--                        <a href="" class="text-white">--}}
-{{--                            🏆 Add Skill Point 🏆--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
+                    <li style="text-align: center; font-size: 30px" class="list-group-item bg-secondary">
+                        <a href="{{ route('skillpoints.edit') }}" class="text-white">
+                            🏆 Update Skill Point 🏆
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>

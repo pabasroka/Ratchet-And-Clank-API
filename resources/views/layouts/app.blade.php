@@ -28,15 +28,15 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto">
                         @auth
-                            <a class="nav-item nav-link text-light" href="{{ route('logout') }}">Wyloguj się</a>
-                            <a class="nav-item nav-link text-light" href="{{ route('admin') }}">Admin panel</a>
+                            <a class="nav-item nav-link text-light" href="{{ route('logout') }}">Logout</a>
+                            <a class="nav-item nav-link text-light" href="{{ route('admin') }}">Admin</a>
                         @endauth
                         @guest
                             @if (Route::has('login'))
                                 <a class="nav-item nav-link text-light" href="{{ route('login') }}">{{ __('Login') }}</a>
                             @endif
                         @endguest
-                        <a class="nav-item nav-link text-light" href="{{ route('welcome') }}">{{ __('Main') }}</a>
+                        <a class="nav-item nav-link text-light" href="{{ route('welcome') }}">{{ __('ADD DATA') }}</a>
                     </ul>
                 </div>
             </div>

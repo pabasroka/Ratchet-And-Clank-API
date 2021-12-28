@@ -151,7 +151,7 @@ class GamesController extends Controller
     // VIEWS
     public function create(): Factory|View|Application
     {
-        return view('games.edit');
+        return view('games.create');
     }
 
     public function edit(): Factory|View|Application

@@ -6,6 +6,7 @@ use App\Http\Controllers\PlanetController;
 use App\Http\Controllers\PlatformsController;
 use App\Http\Controllers\RaceController;
 use App\Http\Controllers\ReleasesController;
+use App\Http\Controllers\SkillPointController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -74,6 +75,12 @@ Route::group(['prefix'=> '/v1'], function () {
     Route::group(['prefix' => '/planets'], function() {
         Route::get('/', [PlanetController::class, 'index']);
         Route::get('/{id}', [PlanetController::class, 'show']);
+    });
+
+    // Skill Points
+    Route::group(['prefix' => '/skillpoints'], function() {
+        Route::get('/', [SkillPointController::class, 'index']);
+        Route::get('/{id}', [SkillPointController::class, 'show']);
     });
 
     // Characters
