@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PlanetRequest;
+use App\Models\Galaxy;
 use App\Models\Planet;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
@@ -36,12 +37,19 @@ class PlanetController extends Controller
     {
         $validated = $request->validated();
 
+        $newImageName = '';
+        if ($request->image) {
+            $newImageName = time() . '-' . $request->title . '.' . $request->image->extension();
+            $request->image->move(public_path('images/planets'), $newImageName);
+        }
+
         $approve = 0;
         if (Auth::check()) {
             $approve = 1;
         }
 
         $planet = Planet::create([
+                'image' => $newImageName,
                 'approve' => $approve,
             ] + $validated);
 
@@ -52,6 +60,7 @@ class PlanetController extends Controller
 
     public function create(): Factory|View|Application
     {
-        return view('planets.create');
+        $galaxies = Galaxy::where('approve', 1)->get();
+        return view('planets.create', ['galaxies' => $galaxies]);
     }
 }

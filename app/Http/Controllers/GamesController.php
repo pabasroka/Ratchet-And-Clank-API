@@ -55,7 +55,7 @@ class GamesController extends Controller
     }
 
     // POST
-    public function store(GameFormRequest $request): Response|Application|ResponseFactory
+    public function store(GameFormRequest $request): Response|Redirector|RedirectResponse|Application|ResponseFactory
     {
         // Game
         $validated = $request->validated();
@@ -63,7 +63,7 @@ class GamesController extends Controller
         $newImageName = '';
         if ($request->image) {
             $newImageName = time() . '-' . $request->title . '.' . $request->image->extension();
-            $request->image->move(public_path('images'), $newImageName);
+            $request->image->move(public_path('images/games'), $newImageName);
         }
 
         $approve = 0;
@@ -97,11 +97,7 @@ class GamesController extends Controller
             $game->releases()->save($release);
         }
 
-        return response([
-            'game' => $game,
-            'platform' => $platform,
-            'releases' => $releases
-        ], 201);
+        return redirect('/games')->with('message', 'Game created successfully');
     }
 
     public function update(GameFormRequest $request, $id): Response|Redirector|RedirectResponse|Application|ResponseFactory

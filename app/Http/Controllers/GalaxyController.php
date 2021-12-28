@@ -42,13 +42,11 @@ class GalaxyController extends Controller
             $approve = 1;
         }
 
-        $galaxy = Galaxy::create([
+        Galaxy::create([
             'approve' => $approve,
         ] + $validated);
 
-        return response([
-            'galaxy' => $galaxy
-        ], 201);
+        return redirect('/galaxies')->with('message', 'Galaxy created successfully');
     }
 
     public function create(): Factory|View|Application

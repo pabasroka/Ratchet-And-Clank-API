@@ -9,17 +9,26 @@ class Planet extends Model
 {
     use HasFactory;
 
+    protected $table = 'plantes';
+
     public $timestamps = false;
 
     public $fillable = [
-        'galaxy_id',
         'name',
+        'description',
+        'image',
+    ];
+
+    protected $hidden = [
+        'galaxy_id',
         'approve'
     ];
 
     public const VALIDATION_RULES = [
         'galaxy_id' => ['integer'],
         'name' => ['required', 'string', 'max:32'],
+        'description' => ['nullable', 'string', 'max:500'],
+        'image'  => ['nullable', 'image', 'max:5048'],
         'approve' => ['boolean', 'nullable']
     ];
 }
