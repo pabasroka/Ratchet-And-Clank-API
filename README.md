@@ -1,6 +1,4 @@
-<p align="center">
-    <img src="public/images/logo.png" alt="logo">
- </p>
+![logo](public/images/logo.png)
 
 A RESTful API for Ratchet & Clank - [ratchetclankapi.com](https://..)
 
