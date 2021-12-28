@@ -35,6 +35,9 @@ Route::group(['prefix' => '/games'], function () {
 Route::group(['prefix' => '/races'], function () {
     Route::get('/', [RaceController::class, 'create'])->withoutMiddleware(['auth'])->name('races.create');
     Route::post('/', [RaceController::class, 'store'])->withoutMiddleware(['auth'])->name('races.store');
+    Route::get('/edit', [RaceController::class, 'edit'])->name('races.edit');
+    Route::put('/{id}', [RaceController::class, 'update'])->name('races.update');
+    Route::delete('/{id}', [RaceController::class, 'destroy'])->name('races.destroy');
 });
 
 Route::group(['prefix' => '/galaxies'], function () {

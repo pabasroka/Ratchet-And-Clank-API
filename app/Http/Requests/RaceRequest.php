@@ -24,6 +24,12 @@ class RaceRequest extends FormRequest
      */
     public function rules()
     {
-        return Race::VALIDATION_RULES;
+        $rules = Race::VALIDATION_RULES;
+
+        if ($this->getMethod() == 'POST') { // store
+             $rules += ['name' => ['required', 'string', 'max:32']];
+        }
+
+        return $rules;
     }
 }

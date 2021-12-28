@@ -11,11 +11,11 @@
                             🎮 Update Game 🎮
                         </a>
                     </li>
-{{--                    <li style="text-align: center; font-size: 30px" class="list-group-item">--}}
-{{--                        <a href="{{ route('races.edit') }}">--}}
-{{--                            👽 Add Race 👽--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
+                    <li style="text-align: center; font-size: 30px" class="list-group-item">
+                        <a href="{{ route('races.edit') }}">
+                            👽 Update Race 👽
+                        </a>
+                    </li>
 {{--                    <li style="text-align: center; font-size: 30px" class="list-group-item">--}}
 {{--                        <a href="{{ route('galaxies.edit') }}">--}}
 {{--                            🌌 Add Galaxy 🌌--}}

@@ -17,11 +17,11 @@ class Planet extends Model
         'name',
         'description',
         'image',
+        'approve'
     ];
 
     protected $hidden = [
         'galaxy_id',
-        'approve'
     ];
 
     public const VALIDATION_RULES = [
