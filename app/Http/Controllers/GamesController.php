@@ -27,6 +27,8 @@ class GamesController extends Controller
             ->with('skillpoints:id,name,description,game_id,planet_id')
             ->get();
 
+        $games->makeHidden('approve')->toArray();
+
         foreach ($games as $game) {
             if ($game->image) {
                 $game->image = public_path('images/' . $game->image);
