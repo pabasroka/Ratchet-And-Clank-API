@@ -7,12 +7,13 @@
 
                 to jest widoczne dla wszystkich <br/>
 
-                <a href="{{ route('games.create') }}">Add new game 🎮</a><br>
+                <a href="{{ route('games.create') }}">🎮 Add New Game 🎮</a><br>
 
-                <a href="{{ route('races.create') }}">Add new race 👽</a><br>
+                <a href="{{ route('races.create') }}">👽 Add New Race 👽</a><br>
 
-                <a href="{{ route('galaxies.create') }}">Add new galaxy 🌌</a><br>
+                <a href="{{ route('galaxies.create') }}">🌌 Add New Galaxy 🌌</a><br>
 
+                <a href="{{ route('planets.create') }}">🌍 Add New Planet 🌍</a><br>
 
             </div>
         </div>

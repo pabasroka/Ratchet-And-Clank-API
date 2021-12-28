@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\GalaxyController;
 use App\Http\Controllers\GamesController;
+use App\Http\Controllers\PlanetController;
 use App\Http\Controllers\PlatformsController;
 use App\Http\Controllers\RaceController;
 use App\Http\Controllers\ReleasesController;
@@ -20,6 +21,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['prefix'=> '/v1'], function () {
+
+    // All routes
+    Route::get('/', function () {
+        $routes = Route::getRoutes();
+        $apiRoutes = [];
+        foreach ($routes as $route) {
+            if (str_starts_with($route->uri, 'api/v1/')) {
+                $routeElements = explode('/', $route->uri);
+                $routeName = end($routeElements);
+                if ($routeName != '{id}') {
+                    $apiRoutes[] = [
+                        $routeName => url($route->uri),
+                    ];
+                }
+            }
+        }
+       return $apiRoutes;
+    });
 
     // Games
     Route::group(['prefix' => '/games'], function () {
@@ -52,6 +71,10 @@ Route::group(['prefix'=> '/v1'], function () {
     });
 
     // Planets
+    Route::group(['prefix' => '/planets'], function() {
+        Route::get('/', [PlanetController::class, 'index']);
+        Route::get('/{id}', [PlanetController::class, 'show']);
+    });
 
     // Characters
 

@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\GalaxyController;
 use App\Http\Controllers\GamesController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PlanetController;
 use App\Http\Controllers\RaceController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -38,4 +39,9 @@ Route::group(['prefix' => '/races'], function () {
 Route::group(['prefix' => '/galaxies'], function () {
     Route::get('/', [GalaxyController::class, 'create'])->withoutMiddleware(['auth'])->name('galaxies.create');
     Route::post('/', [GalaxyController::class, 'store'])->withoutMiddleware(['auth'])->name('galaxies.store');
+});
+
+Route::group(['prefix' => '/planets'], function () {
+    Route::get('/', [PlanetController::class, 'create'])->withoutMiddleware(['auth'])->name('planets.create');
+    Route::post('/', [PlanetController::class, 'store'])->withoutMiddleware(['auth'])->name('planets.store');
 });
