@@ -10,10 +10,19 @@
                     <h3 class="mb-3">The Data Will Be Available After Approval By The Administrator</h3>
                     <h6 class="mb-3">Have Any Question? Ask Me:</h6>
                     <h6 class="mb-3">
-                        <a href="mailto:patryksroczynski13@gmail.com" class="text-white">
+                        <a href="mailto:patryksroczynski13@gmail.com" class="text-white secret">
                             patryksroczynski13@gmail.com
                         </a>
                     </h6>
+                </div>
+
+                <div hidden class="rivet tenor-gif-embed" data-postid="21329300" data-share-method="host" data-aspect-ratio="1.78771" data-width="100%">
+                    <a href="https://tenor.com/view/rivet-ratchet-and-clank-rift-apart-new-lombax-lombax-wink-gif-21329300">
+                        Rivet Ratchet And Clank Rift Apart GIF
+                    </a>from
+                    <a href="https://tenor.com/search/rivet-gifs">
+                        Rivet GIFs
+                    </a>
                 </div>
 
                 <ul class="list-group list-group-flush bg-secondary">
@@ -71,4 +80,14 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+    <script>
+        document.querySelector('.secret').addEventListener('mouseover', () => {
+           document.querySelector('.rivet').hidden = false
+        });
+        document.querySelector('.secret').addEventListener('mouseout', () => {
+            console.log('xd')
+            document.querySelector('.rivet').hidden = true
+        });
+    </script>
 @endsection
