@@ -7,6 +7,7 @@ use App\Http\Controllers\PlatformsController;
 use App\Http\Controllers\RaceController;
 use App\Http\Controllers\ReleasesController;
 use App\Http\Controllers\SkillPointController;
+use App\Http\Controllers\VehicleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -81,6 +82,12 @@ Route::group(['prefix'=> '/v1'], function () {
     Route::group(['prefix' => '/skillpoints'], function() {
         Route::get('/', [SkillPointController::class, 'index']);
         Route::get('/{id}', [SkillPointController::class, 'show']);
+    });
+
+    // Vehicles
+    Route::group(['prefix' => '/vehicles'], function() {
+        Route::get('/', [VehicleController::class, 'index']);
+        Route::get('/{id}', [VehicleController::class, 'show']);
     });
 
     // Characters

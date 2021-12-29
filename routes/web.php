@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PlanetController;
 use App\Http\Controllers\RaceController;
 use App\Http\Controllers\SkillPointController;
+use App\Http\Controllers\VehicleController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -63,4 +64,12 @@ Route::group(['prefix' => '/skillpoints'], function () {
     Route::get('/edit', [SkillPointController::class, 'edit'])->name('skillpoints.edit');
     Route::put('/{id}', [SkillPointController::class, 'update'])->name('skillpoints.update');
     Route::delete('/{id}', [SkillPointController::class, 'destroy'])->name('skillpoints.destroy');
+});
+
+Route::group(['prefix' => '/vehicles'], function () {
+    Route::get('/', [VehicleController::class, 'create'])->withoutMiddleware(['auth'])->name('vehicles.create');
+    Route::post('/', [VehicleController::class, 'store'])->withoutMiddleware(['auth'])->name('vehicles.store');
+    Route::get('/edit', [VehicleController::class, 'edit'])->name('vehicles.edit');
+    Route::put('/{id}', [VehicleController::class, 'update'])->name('vehicles.update');
+    Route::delete('/{id}', [VehicleController::class, 'destroy'])->name('vehicles.destroy');
 });

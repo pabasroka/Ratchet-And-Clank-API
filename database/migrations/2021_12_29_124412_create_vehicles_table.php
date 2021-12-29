@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePlantesTable extends Migration
+class CreateVehiclesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreatePlantesTable extends Migration
      */
     public function up()
     {
-        Schema::create('plantes', function (Blueprint $table) {
+        Schema::create('vehicles', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('galaxy_id');
+            $table->unsignedBigInteger('game_id');
             $table->string('name', 32);
-            $table->string('description', 500)->nullable();
             $table->string("image")->nullable();
             $table->boolean('approve')->nullable()->default(0);
         });
@@ -30,6 +29,6 @@ class CreatePlantesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('plantes');
+        Schema::dropIfExists('vehicles');
     }
 }

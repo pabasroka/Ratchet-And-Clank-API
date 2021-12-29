@@ -6,7 +6,7 @@
             <div class="col-md-8">
 
                 <div class="p-5 text-center">
-                    <h1 class="mb-3">Add Planet 🌍</h1>
+                    <h1 class="mb-3">Add Vehicles 🚀</h1>
                 </div>
 
                 @if(session()->has('message'))
@@ -15,7 +15,7 @@
                     </div>
                 @endif
 
-                <form method="post" action="{{ route('planets.store') }}" enctype="multipart/form-data">
+                <form method="post" action="{{ route('vehicles.store') }}" enctype="multipart/form-data">
                     @csrf
 
                     <div class="form-group">
@@ -24,18 +24,13 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="galaxy">Galaxy: </label>
-                        <select name="galaxy_id" id="galaxy_id">
-                            @foreach($galaxies as $galaxy)
-                                <option value="{{ $galaxy->id }}">{{ $galaxy->name }}</option>
+                        <label for="game_id">Game: </label>
+                        <select name="game_id" id="game_id">
+                            @foreach($games as $game)
+                                <option value="{{ $game->id }}">{{ $game->title }}</option>
                             @endforeach
                         </select>
-                        <a href="{{ route('galaxies.create') }}">Add new galaxy (jump into galaxy form)</a>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="description">Description: </label><br>
-                        <textarea name="description" id="description" cols="70" rows="7" maxlength="500" placeholder="Short description about planet"></textarea>
+                        <a href="{{ route('games.create') }}">Add new game (jump into galaxy form)</a>
                     </div>
 
                     <div class="form-group">

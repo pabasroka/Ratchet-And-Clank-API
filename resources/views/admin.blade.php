@@ -28,29 +28,29 @@
                     </li>
 {{--                    <li style="text-align: center; font-size: 30px" class="list-group-item bg-secondary">--}}
 {{--                        <a href="" class="text-white">--}}
-{{--                            🔫 Add Weapon 🔫--}}
+{{--                            🔫 Update Weapon 🔫--}}
 {{--                        </a>--}}
 {{--                    </li>--}}
 {{--                    <li style="text-align: center; font-size: 30px" class="list-group-item bg-secondary">--}}
 {{--                        <a href="" class="text-white">--}}
-{{--                            🧰 Add Gadget 🧰--}}
+{{--                            🧰 Update Gadget 🧰--}}
 {{--                        </a>--}}
 {{--                    </li>--}}
 {{--                    <li style="text-align: center; font-size: 30px" class="list-group-item bg-secondary">--}}
 {{--                        <a href="" class="text-white">--}}
-{{--                            👾 Add Enemy 👾--}}
+{{--                            👾 Update Enemy 👾--}}
 {{--                        </a>--}}
 {{--                    </li>--}}
 {{--                    <li style="text-align: center; font-size: 30px" class="list-group-item bg-secondary">--}}
 {{--                        <a href="" class="text-white">--}}
-{{--                            🏭 Add Organization 🏭--}}
+{{--                            🏭 Update Organization 🏭--}}
 {{--                        </a>--}}
 {{--                    </li>--}}
-{{--                    <li style="text-align: center; font-size: 30px" class="list-group-item bg-secondary">--}}
-{{--                        <a href="" class="text-white">--}}
-{{--                            🚀 Add Vehicles 🚀--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
+                    <li style="text-align: center; font-size: 30px" class="list-group-item bg-secondary">
+                        <a href="{{ route('vehicles.edit') }}" class="text-white">
+                            🚀 Update Vehicles 🚀
+                        </a>
+                    </li>
                     <li style="text-align: center; font-size: 30px" class="list-group-item bg-secondary">
                         <a href="{{ route('skillpoints.edit') }}" class="text-white">
                             🏆 Update Skill Point 🏆
