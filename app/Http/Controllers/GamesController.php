@@ -25,15 +25,23 @@ class GamesController extends Controller
     {
         $games = Game::where('approve', 1)
             ->with('skillpoints:id,name,description,game_id,planet_id')
+            ->with('vehicles:id,name,image,game_id')
             ->get();
 
         $games->makeHidden('approve')->toArray();
 
         foreach ($games as $game) {
             if ($game->image) {
-                $game->image = public_path('images/' . $game->image);
+                $game->image = public_path('images/games/' . $game->image);
             }
         }
+
+        foreach ($games[0]->vehicles as $vehicle) {
+            if ($vehicle->image) {
+                $vehicle->image = public_path('images/vehicles/' . $vehicle->image);
+            }
+        }
+
         //        return response()->download(public_path('images/1640292616-Ratchet & Clank.jpg'));
 
         return response([
@@ -52,6 +60,12 @@ class GamesController extends Controller
 
         if ($game[0]->image) {
             $game[0]->image = public_path('images/' . $game[0]->image);
+        }
+
+        foreach ($game[0]->vehicles as $vehicle) {
+            if ($vehicle->image) {
+                $vehicle->image = public_path('images/vehicles/' . $vehicle->image);
+            }
         }
 
         return response([

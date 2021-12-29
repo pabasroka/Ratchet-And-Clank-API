@@ -10,7 +10,7 @@ class Game extends Model
 {
     use HasFactory;
 
-    protected $with = ['releases', 'platforms', 'skillpoints'];
+    protected $with = ['releases', 'platforms', 'skillpoints', 'vehicles'];
 
     protected $fillable = [
         'title',
@@ -47,6 +47,10 @@ class Game extends Model
 
     public function skillpoints() {
         return $this->hasMany(SkillPoint::class, 'game_id', 'id');
+    }
+
+    public function vehicles() {
+        return $this->hasMany(Vehicle::class, 'game_id', 'id');
     }
 
 }

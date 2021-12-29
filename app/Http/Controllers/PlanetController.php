@@ -21,6 +21,12 @@ class PlanetController extends Controller
             ->get();
         $planets->makeHidden('approve')->toArray();
 
+        foreach ($planets as $planet) {
+            if ($planet->image) {
+                $planet->image = public_path('images/planets/' . $planet->image);
+            }
+        }
+
         return response([
             'planets' => $planets
         ], 200);
@@ -32,6 +38,10 @@ class PlanetController extends Controller
             ->where('approve', 1)
             ->get();
         $planet->makeHidden('approve')->toArray();
+
+        if ($planet[0]->image) {
+            $planet[0]->image = public_path('images/planets/' . $planet[0]->image);
+        }
 
         return response([
             'planet' => $planet

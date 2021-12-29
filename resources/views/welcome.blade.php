@@ -82,11 +82,10 @@
     </div>
     <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
     <script>
-        document.querySelector('.secret').addEventListener('mouseover', () => {
+        document.querySelector('.secret').addEventListener('click', () => {
            document.querySelector('.rivet').hidden = false
         });
-        document.querySelector('.secret').addEventListener('mouseout', () => {
-            console.log('xd')
+        document.querySelector('.rivet').addEventListener('mouseover', () => {
             document.querySelector('.rivet').hidden = true
         });
     </script>
