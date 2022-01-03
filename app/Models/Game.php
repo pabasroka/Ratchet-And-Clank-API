@@ -45,11 +45,13 @@ class Game extends Model
         return $this->hasMany(Platform::class, 'game_id', 'id');
     }
 
-    public function skillpoints() {
+    public function skillpoints(): HasMany
+    {
         return $this->hasMany(SkillPoint::class, 'game_id', 'id');
     }
 
-    public function vehicles() {
+    public function vehicles(): HasMany
+    {
         return $this->hasMany(Vehicle::class, 'game_id', 'id');
     }
 

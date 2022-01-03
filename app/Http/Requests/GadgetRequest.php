@@ -2,9 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Gadget;
 use Illuminate\Foundation\Http\FormRequest;
 
-class GameFormRequest extends FormRequest
+class GadgetRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,19 +24,12 @@ class GameFormRequest extends FormRequest
      */
     public function rules()
     {
-        $formRequests = [
-            GameRequest::class,
-            PlatformRequest::class,
-            ReleaseRequest::class
-        ];
+        $rules = Gadget::VALIDATION_RULES;
 
-        $rules = [];
-
-        foreach ($formRequests as $source) {
-            $rules = array_merge(
-                $rules,
-                (new $source)->rules()
-            );
+        if ($this->getMethod() == 'POST') { // store
+            $rules += ['first_appearance' => ['integer']];
+            $rules += ['name' => ['required', 'string', 'max:32']];
+            $rules += ['image' => ['nullable', 'image', 'max:5048']];
         }
 
         return $rules;

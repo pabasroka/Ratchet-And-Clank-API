@@ -61,7 +61,7 @@ class GamesController extends Controller
         $game->makeHidden('approve')->toArray();
 
         if ($game[0]->image) {
-            $game[0]->image = public_path('images/' . $game[0]->image);
+            $game[0]->image = public_path('images/vehicles' . $game[0]->image);
         }
 
         foreach ($game[0]->vehicles as $vehicle) {

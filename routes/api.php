@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GadgetController;
 use App\Http\Controllers\GalaxyController;
 use App\Http\Controllers\GamesController;
 use App\Http\Controllers\PlanetController;
@@ -95,6 +96,10 @@ Route::group(['prefix'=> '/v1'], function () {
     // Weapons
 
     // Gadgets
+    Route::group(['prefix' => '/gadgets'], function() {
+        Route::get('/', [GadgetController::class, 'index']);
+        Route::get('/{id}', [GadgetController::class, 'show']);
+    });
 
     // Enemies
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\GadgetController;
 use App\Http\Controllers\GalaxyController;
 use App\Http\Controllers\GamesController;
 use App\Http\Controllers\HomeController;
@@ -72,4 +73,12 @@ Route::group(['prefix' => '/vehicles'], function () {
     Route::get('/edit', [VehicleController::class, 'edit'])->name('vehicles.edit');
     Route::put('/{id}', [VehicleController::class, 'update'])->name('vehicles.update');
     Route::delete('/{id}', [VehicleController::class, 'destroy'])->name('vehicles.destroy');
+});
+
+Route::group(['prefix' => '/gadgets'], function () {
+    Route::get('/', [GadgetController::class, 'create'])->withoutMiddleware(['auth'])->name('gadgets.create');
+    Route::post('/', [GadgetController::class, 'store'])->withoutMiddleware(['auth'])->name('gadgets.store');
+    Route::get('/edit', [GadgetController::class, 'edit'])->name('gadgets.edit');
+    Route::put('/{id}', [GadgetController::class, 'update'])->name('gadgets.update');
+    Route::delete('/{id}', [GadgetController::class, 'destroy'])->name('gadgets.destroy');
 });
