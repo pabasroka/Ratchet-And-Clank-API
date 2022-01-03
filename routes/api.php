@@ -3,6 +3,7 @@
 use App\Http\Controllers\GadgetController;
 use App\Http\Controllers\GalaxyController;
 use App\Http\Controllers\GamesController;
+use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\PlanetController;
 use App\Http\Controllers\PlatformsController;
 use App\Http\Controllers\RaceController;
@@ -99,6 +100,12 @@ Route::group(['prefix'=> '/v1'], function () {
     Route::group(['prefix' => '/gadgets'], function() {
         Route::get('/', [GadgetController::class, 'index']);
         Route::get('/{id}', [GadgetController::class, 'show']);
+    });
+
+    // Organizations
+    Route::group(['prefix' => '/organizations'], function() {
+        Route::get('/', [OrganizationController::class, 'index']);
+        Route::get('/{id}', [OrganizationController::class, 'show']);
     });
 
     // Enemies

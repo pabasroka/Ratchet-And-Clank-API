@@ -62,7 +62,7 @@
                         </a>
                     </li>
                     <li style="text-align: center; font-size: 30px" class="list-group-item bg-secondary">
-                        <a href="" class="text-white">
+                        <a href="{{ route('organizations.create') }}" class="text-white">
                             🏭 Add Organization 🏭
                         </a>
                     </li>

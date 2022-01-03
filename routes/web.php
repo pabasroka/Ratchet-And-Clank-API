@@ -5,6 +5,7 @@ use App\Http\Controllers\GadgetController;
 use App\Http\Controllers\GalaxyController;
 use App\Http\Controllers\GamesController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\PlanetController;
 use App\Http\Controllers\RaceController;
 use App\Http\Controllers\SkillPointController;
@@ -81,4 +82,12 @@ Route::group(['prefix' => '/gadgets'], function () {
     Route::get('/edit', [GadgetController::class, 'edit'])->name('gadgets.edit');
     Route::put('/{id}', [GadgetController::class, 'update'])->name('gadgets.update');
     Route::delete('/{id}', [GadgetController::class, 'destroy'])->name('gadgets.destroy');
+});
+
+Route::group(['prefix' => '/organizations'], function () {
+    Route::get('/', [OrganizationController::class, 'create'])->withoutMiddleware(['auth'])->name('organizations.create');
+    Route::post('/', [OrganizationController::class, 'store'])->withoutMiddleware(['auth'])->name('organizations.store');
+    Route::get('/edit', [OrganizationController::class, 'edit'])->name('organizations.edit');
+    Route::put('/{id}', [OrganizationController::class, 'update'])->name('organizations.update');
+    Route::delete('/{id}', [OrganizationController::class, 'destroy'])->name('organizations.destroy');
 });

@@ -41,11 +41,11 @@
 {{--                            👾 Update Enemy 👾--}}
 {{--                        </a>--}}
 {{--                    </li>--}}
-{{--                    <li style="text-align: center; font-size: 30px" class="list-group-item bg-secondary">--}}
-{{--                        <a href="" class="text-white">--}}
-{{--                            🏭 Update Organization 🏭--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
+                    <li style="text-align: center; font-size: 30px" class="list-group-item bg-secondary">
+                        <a href="{{ route('organizations.edit') }}" class="text-white">
+                            🏭 Update Organization 🏭
+                        </a>
+                    </li>
                     <li style="text-align: center; font-size: 30px" class="list-group-item bg-secondary">
                         <a href="{{ route('vehicles.edit') }}" class="text-white">
                             🚀 Update Vehicles 🚀
