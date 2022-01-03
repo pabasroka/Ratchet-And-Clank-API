@@ -9,8 +9,6 @@ class Planet extends Model
 {
     use HasFactory;
 
-    protected $table = 'plantes';
-
     public $timestamps = false;
 
     public $fillable = [

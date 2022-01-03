@@ -36,9 +36,11 @@ class GamesController extends Controller
             }
         }
 
-        foreach ($games[0]->vehicles as $vehicle) {
-            if ($vehicle->image) {
-                $vehicle->image = public_path('images/vehicles/' . $vehicle->image);
+        foreach ($games as $game) {
+            foreach ($game->vehicles as $vehicle) {
+                if ($vehicle->image) {
+                    $vehicle->image = public_path('images/vehicles/' . $vehicle->image);
+                }
             }
         }
 

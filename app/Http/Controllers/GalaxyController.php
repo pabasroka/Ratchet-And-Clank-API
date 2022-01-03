@@ -20,6 +20,14 @@ class GalaxyController extends Controller
             ->get();
         $galaxies->makeHidden('approve')->toArray();
 
+        foreach ($galaxies as $galaxy) {
+            foreach ($galaxy->planets as $planet) {
+                if ($planet->image) {
+                    $planet->image = public_path('images/planets/' . $planet->image);
+                }
+            }
+        }
+
         return response([
             'galaxies' => $galaxies
         ], 200);
@@ -31,6 +39,12 @@ class GalaxyController extends Controller
             ->where('approve', 1)
             ->get();
         $galaxy->makeHidden('approve')->toArray();
+
+        foreach ($galaxy[0]->planets as $planet) {
+            if ($planet->image) {
+                $planet->image = public_path('images/planets/' . $planet->image);
+            }
+        }
 
         return response([
             'galaxy' => $galaxy
