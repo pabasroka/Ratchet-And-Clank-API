@@ -31,21 +31,16 @@
                             🌍 Update Planet 🌍
                         </a>
                     </li>
-{{--                    <li style="text-align: center; font-size: 30px" class="list-group-item bg-secondary">--}}
-{{--                        <a href="" class="text-white">--}}
-{{--                            🔫 Update Weapon 🔫--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
+                    <li style="text-align: center; font-size: 30px" class="list-group-item bg-secondary">
+                        <a href="{{ route('weapons.edit') }}" class="text-white">
+                            🔫 Update Weapon 🔫
+                        </a>
+                    </li>
                     <li style="text-align: center; font-size: 30px" class="list-group-item bg-secondary">
                         <a href="{{ route('gadgets.edit') }}" class="text-white">
                             🧰 Update Gadget 🧰
                         </a>
                     </li>
-{{--                    <li style="text-align: center; font-size: 30px" class="list-group-item bg-secondary">--}}
-{{--                        <a href="" class="text-white">--}}
-{{--                            👾 Update Enemy 👾--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
                     <li style="text-align: center; font-size: 30px" class="list-group-item bg-secondary">
                         <a href="{{ route('organizations.edit') }}" class="text-white">
                             🏭 Update Organization 🏭

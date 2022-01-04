@@ -29,7 +29,7 @@ class InsetDataIntoGames extends Migration
                 'developers' => 'Insomniac Games',
                 'directors' => '',
                 'composer' => '',
-                'approve' => 0
+                'approve' => 1
             )
         );
 
@@ -37,7 +37,7 @@ class InsetDataIntoGames extends Migration
             array(
                 'game_id' => 1,
                 'platform' => 'PS2',
-                'approve' => 0
+                'approve' => 1
             )
         );
 
@@ -46,7 +46,7 @@ class InsetDataIntoGames extends Migration
                 'game_id' => 1,
                 'region' => 'JP',
                 'date' => '2021-12-16',
-                'approve' => 0
+                'approve' => 1
             )
         );
     }

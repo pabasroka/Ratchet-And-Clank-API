@@ -52,18 +52,13 @@
                         </a>
                     </li>
                     <li style="text-align: center; font-size: 30px" class="list-group-item bg-secondary">
-                        <a href="" class="text-white">
+                        <a href="{{ route('weapons.create') }}" class="text-white">
                             🔫 Add Weapon 🔫
                         </a>
                     </li>
                     <li style="text-align: center; font-size: 30px" class="list-group-item bg-secondary">
                         <a href="{{ route('gadgets.create') }}" class="text-white">
                             🧰 Add Gadget 🧰
-                        </a>
-                    </li>
-                    <li style="text-align: center; font-size: 30px" class="list-group-item bg-secondary">
-                        <a href="" class="text-white">
-                            👾 Add Enemy 👾
                         </a>
                     </li>
                     <li style="text-align: center; font-size: 30px" class="list-group-item bg-secondary">

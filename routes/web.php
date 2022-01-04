@@ -11,6 +11,7 @@ use App\Http\Controllers\PlanetController;
 use App\Http\Controllers\RaceController;
 use App\Http\Controllers\SkillPointController;
 use App\Http\Controllers\VehicleController;
+use App\Http\Controllers\WeaponController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -100,4 +101,12 @@ Route::group(['prefix' => '/characters'], function () {
     Route::get('/edit', [CharacterController::class, 'edit'])->name('characters.edit');
     Route::put('/{id}', [CharacterController::class, 'update'])->name('characters.update');
     Route::delete('/{id}', [CharacterController::class, 'destroy'])->name('characters.destroy');
+});
+
+Route::group(['prefix' => '/weapons'], function () {
+    Route::get('/', [WeaponController::class, 'create'])->withoutMiddleware(['auth'])->name('weapons.create');
+    Route::post('/', [WeaponController::class, 'store'])->withoutMiddleware(['auth'])->name('weapons.store');
+    Route::get('/edit', [WeaponController::class, 'edit'])->name('weapons.edit');
+    Route::put('/{id}', [WeaponController::class, 'update'])->name('weapons.update');
+    Route::delete('/{id}', [WeaponController::class, 'destroy'])->name('weapons.destroy');
 });

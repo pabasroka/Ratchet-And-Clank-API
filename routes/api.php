@@ -11,6 +11,7 @@ use App\Http\Controllers\RaceController;
 use App\Http\Controllers\ReleasesController;
 use App\Http\Controllers\SkillPointController;
 use App\Http\Controllers\VehicleController;
+use App\Http\Controllers\WeaponController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -99,6 +100,10 @@ Route::group(['prefix'=> '/v1'], function () {
     });
 
     // Weapons
+    Route::group(['prefix' => '/weapons'], function() {
+        Route::get('/', [WeaponController::class, 'index']);
+        Route::get('/{id}', [WeaponController::class, 'show']);
+    });
 
     // Gadgets
     Route::group(['prefix' => '/gadgets'], function() {
@@ -111,9 +116,5 @@ Route::group(['prefix'=> '/v1'], function () {
         Route::get('/', [OrganizationController::class, 'index']);
         Route::get('/{id}', [OrganizationController::class, 'show']);
     });
-
-    // Enemies
-
-    // etc
 
 });
