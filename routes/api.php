@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CharacterController;
 use App\Http\Controllers\GadgetController;
 use App\Http\Controllers\GalaxyController;
 use App\Http\Controllers\GamesController;
@@ -10,7 +11,6 @@ use App\Http\Controllers\RaceController;
 use App\Http\Controllers\ReleasesController;
 use App\Http\Controllers\SkillPointController;
 use App\Http\Controllers\VehicleController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -93,6 +93,10 @@ Route::group(['prefix'=> '/v1'], function () {
     });
 
     // Characters
+    Route::group(['prefix' => '/characters'], function() {
+        Route::get('/', [CharacterController::class, 'index']);
+        Route::get('/{id}', [CharacterController::class, 'show']);
+    });
 
     // Weapons
 

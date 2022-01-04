@@ -18,7 +18,7 @@ class CreateCharactersTable extends Migration
             $table->unsignedBigInteger('galaxy_id');
             $table->unsignedBigInteger('race_id');
             $table->unsignedBigInteger('game_id'); //first_appearance
-            $table->unsignedBigInteger('location_id'); //residence
+            $table->unsignedBigInteger('location_id')->nullable(); //residence
             $table->string('name', 32);
             $table->enum('gender', ['male', 'female', 'unknown']);
             $table->enum('state', ['alive', 'dead', 'lost', 'unknown']);

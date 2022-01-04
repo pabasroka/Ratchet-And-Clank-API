@@ -32,6 +32,11 @@
                         </a>
                     </li>
                     <li style="text-align: center; font-size: 30px" class="list-group-item bg-secondary">
+                        <a href="{{ route('characters.create') }}" class="text-white">
+                            🧑 Add Character 🧑
+                        </a>
+                    </li>
+                    <li style="text-align: center; font-size: 30px" class="list-group-item bg-secondary">
                         <a href="{{ route('races.create') }}" class="text-white">
                             👽 Add Race 👽
                         </a>

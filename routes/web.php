@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\CharacterController;
 use App\Http\Controllers\GadgetController;
 use App\Http\Controllers\GalaxyController;
 use App\Http\Controllers\GamesController;
@@ -91,4 +92,12 @@ Route::group(['prefix' => '/organizations'], function () {
     Route::get('/edit', [OrganizationController::class, 'edit'])->name('organizations.edit');
     Route::put('/{id}', [OrganizationController::class, 'update'])->name('organizations.update');
     Route::delete('/{id}', [OrganizationController::class, 'destroy'])->name('organizations.destroy');
+});
+
+Route::group(['prefix' => '/characters'], function () {
+    Route::get('/', [CharacterController::class, 'create'])->withoutMiddleware(['auth'])->name('characters.create');
+    Route::post('/', [CharacterController::class, 'store'])->withoutMiddleware(['auth'])->name('characters.store');
+    Route::get('/edit', [CharacterController::class, 'edit'])->name('characters.edit');
+    Route::put('/{id}', [CharacterController::class, 'update'])->name('characters.update');
+    Route::delete('/{id}', [CharacterController::class, 'destroy'])->name('characters.destroy');
 });

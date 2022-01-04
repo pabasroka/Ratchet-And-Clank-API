@@ -24,7 +24,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="galaxy">Galaxy: </label>
+                        <label for="galaxy_id">Galaxy: </label>
                         <select name="galaxy_id" id="galaxy_id">
                             @foreach($galaxies as $galaxy)
                                 <option value="{{ $galaxy->id }}">{{ $galaxy->name }}</option>

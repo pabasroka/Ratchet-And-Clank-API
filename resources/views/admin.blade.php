@@ -12,6 +12,11 @@
                         </a>
                     </li>
                     <li style="text-align: center; font-size: 30px" class="list-group-item bg-secondary">
+                        <a href="{{ route('characters.edit') }}" class="text-white">
+                            🧑 Update Character 🧑
+                        </a>
+                    </li>
+                    <li style="text-align: center; font-size: 30px" class="list-group-item bg-secondary">
                         <a href="{{ route('races.edit') }}" class="text-white">
                             👽 Update Race 👽
                         </a>
