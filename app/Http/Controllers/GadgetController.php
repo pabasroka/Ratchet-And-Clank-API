@@ -21,14 +21,14 @@ class GadgetController extends Controller
         $gadgets = Gadget::where('approve', 1)
             ->get();
 
-        $gadgetsJson = [];
+        $gadgetsJSON = [];
         foreach ($gadgets as $gadget) {
 
             if ($gadget->image) {
                 $gadget->image = public_path('images/gadgets/' . $gadget->image);
             }
 
-            $gadgetsJson[] = [
+            $gadgetsJSON[] = [
                 'id' => $gadget->id,
                 'first_appearance' => $gadget->game_id,
                 'name' => $gadget->name,
@@ -36,7 +36,7 @@ class GadgetController extends Controller
             ];
         }
 
-        return response()->json($gadgetsJson);
+        return response()->json($gadgetsJSON);
     }
 
     public function show($id): JsonResponse
@@ -45,20 +45,18 @@ class GadgetController extends Controller
             ->where('approve', 1)
             ->first();
 
-        $gadget->makeHidden('approve')->toArray();
-
         if ($gadget->image) {
             $gadget->image = public_path('images/gadgets/' . $gadget->image);
         }
 
-        $gadgetJson = [
+        $gadgetJSON = [
             'id' => $gadget->id,
             'first_appearance' => $gadget->game_id,
             'name' => $gadget->name,
             'image' => $gadget->image,
         ];
 
-        return response()->json($gadgetJson);
+        return response()->json($gadgetJSON);
     }
 
     public function store(GadgetRequest $request): RedirectResponse

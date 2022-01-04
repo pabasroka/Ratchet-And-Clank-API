@@ -12,6 +12,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -21,58 +22,150 @@ use Illuminate\Support\Facades\Auth;
 class GamesController extends Controller
 {
     // GET
-    public function index(): Response|Application|ResponseFactory
+    public function index(): JsonResponse
     {
         $games = Game::where('approve', 1)
-            ->with('skillpoints:id,name,description,game_id,planet_id')
-            ->with('vehicles:id,name,image,game_id')
+//            ->with('skillpoints:id,name,description,game_id,planet_id')
+//            ->with('vehicles:id,name,image,game_id')
             ->get();
 
-        $games->makeHidden('approve')->toArray();
-
+        $gamesJSON = [];
         foreach ($games as $game) {
+
             if ($game->image) {
                 $game->image = public_path('images/games/' . $game->image);
             }
-        }
 
-        foreach ($games as $game) {
+            $releases = [];
+            foreach ($game->releases as $release) {
+                $releases[] = [
+                    'id' => $release->id,
+                    'region' => $release->region,
+                    'date' => $release->date,
+                ];
+            }
+
+            $platforms = [];
+            foreach ($game->platforms as $platform) {
+                $platforms[] = [
+                    'id' => $platform->id,
+                    'name' => $platform->platform,
+                ];
+            }
+
+            $skillPoints = [];
+            foreach ($game->skillpoints as $skillpoint) {
+                $skillPoints[] = [
+                    'id' => $skillpoint->id,
+                    'planet_id' => $skillpoint->planet_id,
+                    'name' => $skillpoint->name,
+                    'description' => $skillpoint->description,
+                ];
+            }
+
+            $vehicles = [];
             foreach ($game->vehicles as $vehicle) {
                 if ($vehicle->image) {
                     $vehicle->image = public_path('images/vehicles/' . $vehicle->image);
                 }
+
+                $vehicles[] = [
+                    'id' => $vehicle->id,
+                    'name' => $vehicle->name,
+                    'image' => $vehicle->image,
+                ];
             }
+
+
+            $gamesJSON[] = [
+                'id' => $game->id,
+                'title' => $game->title,
+                'subtitle' => $game->subtitle,
+                'image' => $game->image,
+                'developers' => $game->developers,
+                'directors' => $game->directors,
+                'composer' => $game->composer,
+                'releases' => $releases,
+                'platforms' => $platforms,
+                'skill_points' => $skillPoints,
+                'vehicle' => $vehicles,
+            ];
+
         }
 
-        //        return response()->download(public_path('images/1640292616-Ratchet & Clank.jpg'));
+        // return response()->download(public_path('images/1640292616-Ratchet & Clank.jpg'));
 
-        return response([
-            'games' => $games
-        ], 200);
+        return response()->json($gamesJSON);
     }
 
     // GET BY ID
-    public function show($id): Response|Application|ResponseFactory
+    public function show($id): JsonResponse
     {
         $game = Game::where('id', $id)
             ->where('approve', 1)
-            ->get();
+            ->first();
 
         $game->makeHidden('approve')->toArray();
 
-        if ($game[0]->image) {
-            $game[0]->image = public_path('images/vehicles' . $game[0]->image);
+        if ($game->image) {
+            $game->image = public_path('images/vehicles' . $game->image);
         }
 
-        foreach ($game[0]->vehicles as $vehicle) {
+        $releases = [];
+        foreach ($game->releases as $release) {
+            $releases[] = [
+                'id' => $release->id,
+                'region' => $release->region,
+                'date' => $release->date,
+            ];
+        }
+
+        $platforms = [];
+        foreach ($game->platforms as $platform) {
+            $platforms[] = [
+                'id' => $platform->id,
+                'name' => $platform->platform,
+            ];
+        }
+
+        $skillPoints = [];
+        foreach ($game->skillpoints as $skillpoint) {
+            $skillPoints[] = [
+                'id' => $skillpoint->id,
+                'planet_id' => $skillpoint->planet_id,
+                'name' => $skillpoint->name,
+                'description' => $skillpoint->description,
+            ];
+        }
+
+        $vehicles = [];
+        foreach ($game->vehicles as $vehicle) {
             if ($vehicle->image) {
                 $vehicle->image = public_path('images/vehicles/' . $vehicle->image);
             }
+
+            $vehicles[] = [
+                'id' => $vehicle->id,
+                'name' => $vehicle->name,
+                'image' => $vehicle->image,
+            ];
         }
 
-        return response([
-            'game' => $game
-        ], 200);
+        $gameJSON = [
+            'id' => $game->id,
+            'title' => $game->title,
+            'subtitle' => $game->subtitle,
+            'image' => $game->image,
+            'developers' => $game->developers,
+            'directors' => $game->directors,
+            'composer' => $game->composer,
+            'releases' => $releases,
+            'platforms' => $platforms,
+            'skill_points' => $skillPoints,
+            'vehicle' => $vehicles,
+        ];
+
+        return response()->json($gameJSON);
     }
 
     // POST
