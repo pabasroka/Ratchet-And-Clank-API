@@ -30,7 +30,6 @@ class CharacterRequest extends FormRequest
             $rules += ['game_id' => ['integer']];
             $rules += ['galaxy_id' => ['integer']];
             $rules += ['race_id' => ['integer']];
-            $rules += ['location_id' => ['nullable', 'integer']];
             $rules += ['name' => ['required', 'string', 'max:32']];
             $rules += ['gender' => ['nullable', 'string', 'max:12']];
             $rules += ['state' => ['nullable', 'string', 'max:12']];

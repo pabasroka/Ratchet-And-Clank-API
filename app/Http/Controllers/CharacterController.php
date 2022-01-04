@@ -134,13 +134,11 @@ class CharacterController extends Controller
         $games = Game::where('approve', 1)->get();
         $races = Race::where('approve', 1)->get();
         $galaxies = Galaxy::where('approve', 1)->get();
-//        $locations = Location::where('approve', 1)->get(); //TODO add locations table
 
         return view('characters.create', [
             'games' => $games,
             'races' => $races,
             'galaxies' => $galaxies,
-//            'locations' => $locations,
         ]);
     }
 
