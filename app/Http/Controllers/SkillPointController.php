@@ -10,33 +10,47 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
 class SkillPointController extends Controller
 {
-    public function index(): Response|Application|ResponseFactory
+    public function index(): JsonResponse
     {
         $skillPoints = SkillPoint::where('approve', 1)
             ->get();
-        $skillPoints->makeHidden('approve')->toArray();
 
-        return response([
-            'skillPoints' => $skillPoints
-        ], 200);
+        $skillPointsJSON = [];
+        foreach ($skillPoints as $skillPoint) {
+            $skillPointsJSON[] = [
+                'id' => $skillPoint->id,
+                'game_id' => $skillPoint->game_id,
+                'planet_id' => $skillPoint->planet_id,
+                'name' => $skillPoint->name,
+                'description' => $skillPoint->description,
+            ];
+        }
+
+        return response()->json($skillPointsJSON);
     }
 
-    public function show($id): Response|Application|ResponseFactory
+    public function show($id): JsonResponse
     {
         $skillPoint = SkillPoint::where('id', $id)
             ->where('approve', 1)
-            ->get();
-        $skillPoint->makeHidden('approve')->toArray();
+            ->firstOrFail();
 
-        return response([
-            'skillPoint' => $skillPoint
-        ], 200);
+        $skillPointJSON[] = [
+            'id' => $skillPoint->id,
+            'game_id' => $skillPoint->game_id,
+            'planet_id' => $skillPoint->planet_id,
+            'name' => $skillPoint->name,
+            'description' => $skillPoint->description,
+        ];
+
+        return response()->json($skillPointJSON);
     }
 
     public function store(SkillPointRequest $request): RedirectResponse

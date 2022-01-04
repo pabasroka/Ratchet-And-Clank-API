@@ -103,7 +103,7 @@ class GamesController extends Controller
     {
         $game = Game::where('id', $id)
             ->where('approve', 1)
-            ->first();
+            ->firstOrFail();
 
         $game->makeHidden('approve')->toArray();
 

@@ -9,43 +9,55 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
 class PlanetController extends Controller
 {
-    public function index(): Response|Application|ResponseFactory
+    public function index()
     {
         $planets = Planet::where('approve', 1)
             ->get();
-        $planets->makeHidden('approve')->toArray();
 
+        $planetsJSON = [];
         foreach ($planets as $planet) {
             if ($planet->image) {
                 $planet->image = public_path('images/planets/' . $planet->image);
             }
+
+            $planetsJSON[] = [
+                'id' => $planet->id,
+                'galaxy_id' => $planet->galaxy_id,
+                'name' => $planet->name,
+                'description' => $planet->description,
+                'image' => $planet->image,
+            ];
         }
 
-        return response([
-            'planets' => $planets
-        ], 200);
+        return response()->json($planetsJSON);
     }
 
-    public function show($id): Response|Application|ResponseFactory
+    public function show($id): JsonResponse
     {
         $planet = Planet::where('id', $id)
             ->where('approve', 1)
-            ->get();
-        $planet->makeHidden('approve')->toArray();
+            ->firstOrFail();
 
-        if ($planet[0]->image) {
-            $planet[0]->image = public_path('images/planets/' . $planet[0]->image);
+        if ($planet->image) {
+            $planet->image = public_path('images/planets/' . $planet->image);
         }
 
-        return response([
-            'planet' => $planet
-        ], 200);
+       $planetJSON = [
+           'id' => $planet->id,
+           'galaxy_id' => $planet->galaxy_id,
+           'name' => $planet->name,
+           'description' => $planet->description,
+           'image' => $planet->image,
+       ];
+
+        return response()->json($planetJSON);
     }
 
     public function store(PlanetRequest $request): RedirectResponse

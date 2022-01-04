@@ -9,6 +9,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -16,37 +17,48 @@ use Illuminate\Support\Facades\Auth;
 
 class OrganizationController extends Controller
 {
-    public function index(): Response|Application|ResponseFactory
+    public function index(): JsonResponse
     {
         $organizations = Organization::where('approve', 1)
             ->get();
-        $organizations->makeHidden('approve')->toArray();
 
+        $organizationsJSON = [];
         foreach ($organizations as $organization) {
             if ($organization->image) {
                 $organization->image = public_path('images/organizations/' . $organization->image);
             }
+
+            $organizationsJSON[] = [
+                'id' => $organization->id,
+                'galaxy_id' => $organization->galaxy_id,
+                'name' => $organization->name,
+                'description' => $organization->description,
+                'image' => $organization->image
+            ];
         }
 
-        return response([
-            'organizations' => $organizations
-        ], 200);
+        return response()->json($organizationsJSON);
     }
 
-    public function show($id): Response|Application|ResponseFactory
+    public function show($id): JsonResponse
     {
         $organization = Organization::where('id', $id)
             ->where('approve', 1)
-            ->get();
-        $organization->makeHidden('approve')->toArray();
+            ->firstOrFail();
 
-        if ($organization[0]->image) {
-            $organization[0]->image = public_path('images/organizations/' . $organization[0]->image);
+        if ($organization->image) {
+            $organization->image = public_path('images/organizations/' . $organization->image);
         }
 
-        return response([
-            'organization' => $organization
-        ], 200);
+        $organizationJSON = [
+            'id' => $organization->id,
+            'galaxy_id' => $organization->galaxy_id,
+            'name' => $organization->name,
+            'description' => $organization->description,
+            'image' => $organization->image
+        ];
+
+        return response()->json($organizationJSON);
     }
 
     public function store(OrganizationRequest $request): RedirectResponse

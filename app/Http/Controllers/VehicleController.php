@@ -9,6 +9,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -16,27 +17,46 @@ use Illuminate\Support\Facades\Auth;
 
 class VehicleController extends Controller
 {
-    public function index(): Response|Application|ResponseFactory
+    public function index(): JsonResponse
     {
         $vehicles = Vehicle::where('approve', 1)
             ->get();
-        $vehicles->makeHidden('approve')->toArray();
 
-        return response([
-            'vehicles' => $vehicles
-        ], 200);
+        $vehiclesJSON = [];
+        foreach ($vehicles as $vehicle) {
+            if ($vehicle->image) {
+                $vehicle->image = public_path('images/vehicles/' . $vehicle->image);
+            }
+
+            $vehiclesJSON[] = [
+                'id' => $vehicle->id,
+                'game_id' => $vehicle->game_id,
+                'name' => $vehicle->name,
+                'image' => $vehicle->image,
+            ];
+        }
+
+        return response()->json($vehiclesJSON);
     }
 
-    public function show($id)
+    public function show($id): JsonResponse
     {
         $vehicle = Vehicle::where('id', $id)
             ->where('approve', 1)
-            ->get();
-        $vehicle->makeHidden('approve')->toArray();
+            ->first();
 
-        return response([
-            'vehicle' => $vehicle
-        ], 200);
+        if ($vehicle->image) {
+            $vehicle->image = public_path('images/vehicles/' . $vehicle->image);
+        }
+
+        $vehicleJSON = [
+            'id' => $vehicle->id,
+            'game_id' => $vehicle->game_id,
+            'name' => $vehicle->name,
+            'image' => $vehicle->image,
+        ];
+
+        return response()->json($vehicleJSON);
     }
 
     public function store(VehicleRequest $request): RedirectResponse

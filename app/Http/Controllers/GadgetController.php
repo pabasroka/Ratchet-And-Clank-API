@@ -43,7 +43,7 @@ class GadgetController extends Controller
     {
         $gadget = Gadget::where('id', $id)
             ->where('approve', 1)
-            ->first();
+            ->firstOrFail();
 
         if ($gadget->image) {
             $gadget->image = public_path('images/gadgets/' . $gadget->image);

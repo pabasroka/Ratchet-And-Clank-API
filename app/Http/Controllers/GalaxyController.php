@@ -8,47 +8,42 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
 class GalaxyController extends Controller
 {
-    public function index(): Response|Application|ResponseFactory
+    public function index(): JsonResponse
     {
         $galaxies = Galaxy::where('approve', 1)
             ->get();
-        $galaxies->makeHidden('approve')->toArray();
 
+        $galaxiesJSON = [];
         foreach ($galaxies as $galaxy) {
-            foreach ($galaxy->planets as $planet) {
-                if ($planet->image) {
-                    $planet->image = public_path('images/planets/' . $planet->image);
-                }
-            }
+            $galaxiesJSON[] = [
+                'id' => $galaxy->id,
+                'name' => $galaxy->name,
+            ];
         }
 
-        return response([
-            'galaxies' => $galaxies
-        ], 200);
+        return response()->json($galaxiesJSON);
     }
 
-    public function show($id): Response|Application|ResponseFactory
+    public function show($id): JsonResponse
     {
         $galaxy = Galaxy::where('id', $id)
             ->where('approve', 1)
-            ->get();
-        $galaxy->makeHidden('approve')->toArray();
+            ->first();
 
-        foreach ($galaxy[0]->planets as $planet) {
-            if ($planet->image) {
-                $planet->image = public_path('images/planets/' . $planet->image);
-            }
-        }
 
-        return response([
-            'galaxy' => $galaxy
-        ], 200);
+        $galaxyJSON = [
+            'id' => $galaxy->id,
+            'name' => $galaxy->name,
+        ];
+
+        return response()->json($galaxyJSON);
     }
 
     public function store(GalaxyRequest $request)

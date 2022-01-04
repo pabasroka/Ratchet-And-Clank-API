@@ -8,6 +8,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
@@ -15,29 +16,34 @@ use Illuminate\Support\Facades\Auth;
 
 class RaceController extends Controller
 {
-    public function index(): Response|Application|ResponseFactory
+    public function index(): JsonResponse
     {
         $races = Race::where('approve', 1)
             ->get();
 
-        $races->makeHidden('approve')->toArray();
+        $racesJSON = [];
+        foreach ($races as $race) {
+            $racesJSON[] = [
+                'id' => $race->id,
+                'name' => $race->name,
+            ];
+        }
 
-        return response([
-            'races' => $races
-        ], 200);
+        return response()->json($racesJSON);
     }
 
-    public function show($id): Response|Application|ResponseFactory
+    public function show($id): JsonResponse
     {
         $race = Race::where('id', $id)
             ->where('approve', 1)
-            ->get();
+            ->firstOrFail();
 
-        $race->makeHidden('approve')->toArray();
+        $raceJSON = [
+            'id' => $race->id,
+            'name' => $race->name,
+        ];
 
-        return response([
-            'race' => $race
-        ], 200);
+        return response()->json($raceJSON);
     }
 
     public function store(RaceRequest $request): RedirectResponse

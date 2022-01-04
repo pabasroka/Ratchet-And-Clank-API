@@ -11,7 +11,7 @@ class Galaxy extends Model
 
     public $timestamps = false;
 
-    protected $with = ['planets'];
+//    protected $with = ['planets'];
 
     public $fillable = [
         'name',
@@ -22,7 +22,7 @@ class Galaxy extends Model
         'approve' => ['boolean', 'nullable']
     ];
 
-    public function planets() {
-        return $this->hasMany(Planet::class, 'galaxy_id', 'id');
-    }
+//    public function planets() {
+//        return $this->hasMany(Planet::class, 'galaxy_id', 'id');
+//    }
 }
