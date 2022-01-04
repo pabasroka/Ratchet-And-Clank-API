@@ -27,7 +27,7 @@ class GadgetRequest extends FormRequest
         $rules = Gadget::VALIDATION_RULES;
 
         if ($this->getMethod() == 'POST') { // store
-            $rules += ['first_appearance' => ['integer']];
+            $rules += ['game_id' => ['integer']];
             $rules += ['name' => ['required', 'string', 'max:32']];
             $rules += ['image' => ['nullable', 'image', 'max:5048']];
         }

@@ -15,7 +15,7 @@ class CreateGadgetsTable extends Migration
     {
         Schema::create('gadgets', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('first_appearance');
+            $table->unsignedBigInteger('game_id'); //first_appearance
             $table->string('name', 32);
             $table->string("image")->nullable();
             $table->boolean('approve')->nullable()->default(0);

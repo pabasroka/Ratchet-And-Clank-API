@@ -28,4 +28,9 @@ class HomeController extends Controller
         return view('admin', ['games' => $games]);
     }
 
+    public function debug()
+    {
+
+    }
+
 }

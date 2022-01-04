@@ -24,8 +24,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="first_appearance">First appearance: </label>
-                        <select name="first_appearance" id="first_appearance">
+                        <label for="game_id">First appearance: </label>
+                        <select name="game_id" id="game_id">
                             @foreach($games as $game)
                                 <option value="{{ $game->id }}">{{ $game->title }} {{ $game->subtitle }}</option>
                             @endforeach

@@ -28,6 +28,7 @@ Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->withoutMiddleware(['auth'])->name('welcome');
 Route::get('/admin', [HomeController::class, 'admin'])->name('admin');
 Route::get('/logout', [LoginController::class, 'logout']);
+Route::get('/debug', [HomeController::class, 'debug'])->name('debug');
 
 Route::group(['prefix' => '/games'], function () {
     Route::get('/', [GamesController::class, 'create'])->withoutMiddleware(['auth'])->name('games.create');

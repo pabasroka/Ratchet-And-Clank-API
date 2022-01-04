@@ -34,6 +34,14 @@ class InsertDataIntoGalaxies extends Migration
                 'approve' => 1
             )
         );
+
+        DB::table('galaxies')->insert(
+            array(
+                'name' => 'unknown',
+                'approve' => 1
+            )
+        );
+
     }
 
     /**

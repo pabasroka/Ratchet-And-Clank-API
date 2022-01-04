@@ -9,45 +9,56 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
 class GadgetController extends Controller
 {
-    public function index(): Response|Application|ResponseFactory
+    public function index(): JsonResponse
     {
         $gadgets = Gadget::where('approve', 1)
             ->get();
 
-        $gadgets->makeHidden('approve')->toArray();
-
+        $gadgetsJson = [];
         foreach ($gadgets as $gadget) {
+
             if ($gadget->image) {
                 $gadget->image = public_path('images/gadgets/' . $gadget->image);
             }
+
+            $gadgetsJson[] = [
+                'id' => $gadget->id,
+                'first_appearance' => $gadget->game_id,
+                'name' => $gadget->name,
+                'image' => $gadget->image,
+            ];
         }
 
-        return response([
-            'gadgets' => $gadgets
-        ], 200);
+        return response()->json($gadgetsJson);
     }
 
-    public function show($id): Response|Application|ResponseFactory
+    public function show($id): JsonResponse
     {
         $gadget = Gadget::where('id', $id)
             ->where('approve', 1)
-            ->get();
+            ->first();
 
         $gadget->makeHidden('approve')->toArray();
 
-        if ($gadget[0]->image) {
-            $gadget[0]->image = public_path('images/gadgets/' . $gadget[0]->image);
+        if ($gadget->image) {
+            $gadget->image = public_path('images/gadgets/' . $gadget->image);
         }
 
-        return response([
-            'gadget' => $gadget
-        ], 200);
+        $gadgetJson = [
+            'id' => $gadget->id,
+            'first_appearance' => $gadget->game_id,
+            'name' => $gadget->name,
+            'image' => $gadget->image,
+        ];
+
+        return response()->json($gadgetJson);
     }
 
     public function store(GadgetRequest $request): RedirectResponse

@@ -15,7 +15,7 @@ class Gadget extends Model
     protected $with = ['games'];
 
     protected $fillable = [
-        'first_appearance',
+        'game_id',
         'name',
         'image',
         'approve'
@@ -27,6 +27,6 @@ class Gadget extends Model
 
     public function games(): HasOne
     {
-        return $this->hasOne(Game::class, 'id', 'first_appearance');
+        return $this->hasOne(Game::class, 'id', 'game_id');
     }
 }
