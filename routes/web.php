@@ -12,6 +12,7 @@ use App\Http\Controllers\RaceController;
 use App\Http\Controllers\SkillPointController;
 use App\Http\Controllers\VehicleController;
 use App\Http\Controllers\WeaponController;
+use App\Http\Controllers\WeaponEvolutionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -109,4 +110,11 @@ Route::group(['prefix' => '/weapons'], function () {
     Route::get('/edit', [WeaponController::class, 'edit'])->name('weapons.edit');
     Route::put('/{id}', [WeaponController::class, 'update'])->name('weapons.update');
     Route::delete('/{id}', [WeaponController::class, 'destroy'])->name('weapons.destroy');
+});
+
+Route::group(['prefix' => '/weaponsEvolution'], function () {
+    Route::post('/', [WeaponEvolutionController::class, 'store'])->withoutMiddleware(['auth'])->name('weaponsEvolution.store');
+    Route::get('/edit', [WeaponEvolutionController::class, 'edit'])->name('weaponsEvolution.edit');
+    Route::put('/{id}', [WeaponEvolutionController::class, 'update'])->name('weaponsEvolution.update');
+    Route::delete('/{id}', [WeaponEvolutionController::class, 'destroy'])->name('weaponsEvolution.destroy');
 });

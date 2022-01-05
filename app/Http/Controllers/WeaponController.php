@@ -23,10 +23,38 @@ class WeaponController extends Controller
 
         $weaponsJSON = [];
         foreach ($weapons as $weapon) {
+            if ($weapon->image) {
+                $weapon->image = public_path('images/weapons/' . $weapon->image);
+            }
+
+            $weaponEvolution = [];
+            foreach ($weapon->weaponsEvolution as $item) {
+                if ($item->image) {
+                    $item->image = public_path('images/weapons/' . $item->image);
+                }
+                
+                $weaponEvolution[] = [
+                    'id' => $item->id,
+                    'name' => $item->name,
+                    'max_level' => $item->max_level,
+                    'price' => $item->price,
+                    'range' => $item->range,
+                    'rate_of_fire' => $item->rate_of_fire,
+                    'image' => $item->image,
+                ];
+            }
+
+
+
             $weaponsJSON[] = [
                 'id' => $weapon->id,
                 'first_appearance' => $weapon->game_id,
                 'name' => $weapon->name,
+                'price' => $weapon->price,
+                'range' => $weapon->range,
+                'rate_of_fire' => $weapon->rate_of_fire,
+                'image' => $weapon->image,
+                'upgrade' => $weaponEvolution,
             ];
         }
 
@@ -39,10 +67,18 @@ class WeaponController extends Controller
             ->where('approve', 1)
             ->firstOrFail();
 
+        if ($weapon->image) {
+            $weapon->image = public_path('images/weapons/' . $weapon->image);
+        }
+
         $weaponJSON = [
             'id' => $weapon->id,
             'first_appearance' => $weapon->game_id,
             'name' => $weapon->name,
+            'price' => $weapon->price,
+            'range' => $weapon->range,
+            'rate_of_fire' => $weapon->rate_of_fire,
+            'image' => $weapon->image
         ];
 
         return response()->json($weaponJSON);
@@ -52,6 +88,12 @@ class WeaponController extends Controller
     {
         $validated = $request->validated();
 
+        $newImageName = '';
+        if ($request->image) {
+            $newImageName = time() . '-' . $request->title . '.' . $request->image->extension();
+            $request->image->move(public_path('images/weapons'), $newImageName);
+        }
+
         $approve = 0;
         if (Auth::check()) {
             $approve = 1;
@@ -59,6 +101,7 @@ class WeaponController extends Controller
 
         Weapon::create([
                 'approve' => $approve,
+                'image' => $newImageName,
             ] + $validated);
 
         return redirect()->route('weapons.create')->with('message', 'Weapon created successfully');

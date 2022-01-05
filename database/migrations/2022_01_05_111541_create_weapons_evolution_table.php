@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWeaponsTable extends Migration
+class CreateWeaponsEvolutionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateWeaponsTable extends Migration
      */
     public function up()
     {
-        Schema::create('weapons', function (Blueprint $table) {
+        Schema::create('weapons_evolution', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('game_id');
+            $table->unsignedBigInteger('weapon_id');
             $table->string('name', 32);
+            $table->integer('max_level')->nullable();
             $table->decimal('price',11)->nullable();
             $table->enum('range', ['low', 'medium', 'high', 'melee'])->nullable();
             $table->enum('rate_of_fire', ['low', 'medium', 'high'])->nullable();
@@ -32,6 +33,6 @@ class CreateWeaponsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('weapons');
+        Schema::dropIfExists('weapons_evolution');
     }
 }

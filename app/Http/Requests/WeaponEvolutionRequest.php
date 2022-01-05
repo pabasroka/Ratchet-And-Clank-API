@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Weapon;
+use App\Models\WeaponEvolution;
 use Illuminate\Foundation\Http\FormRequest;
 
-class WeaponRequest extends FormRequest
+class WeaponEvolutionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +24,12 @@ class WeaponRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = Weapon::VALIDATION_RULES;
+        $rules = WeaponEvolution::VALIDATION_RULES;
 
         if ($this->getMethod() == 'POST') {
-            $rules += ['game_id' => ['integer']];
+            $rules += ['weapon_id' => ['integer']];
             $rules += ['name' => ['required', 'string', 'max:32']];
+            $rules += ['max_level' => ['nullable', 'integer']];
             $rules += ['price' => ['nullable', 'numeric', 'between:0,99999999999.99']];
             $rules += ['range' => ['nullable', 'string', 'max:12']];
             $rules += ['rate_of_fire' => ['nullable', 'string', 'max:12']];

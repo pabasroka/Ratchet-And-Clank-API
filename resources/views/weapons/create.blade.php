@@ -75,7 +75,7 @@
 
 
 
-                <form method="post" action="{{ route('weapons.store') }}" enctype="multipart/form-data" style="padding: 50px 0">
+                <form method="post" action="{{ route('weaponsEvolution.store') }}" enctype="multipart/form-data" style="padding: 50px 0">
                 @csrf
 
                     <div class="form-group">

@@ -46,6 +46,7 @@ class InsertDataIntoRaces extends Migration
           ['name' => 'Voltan Ivy', 'approve' => 1],
           ['name' => 'Vullard', 'approve' => 1],
           ['name' => 'Zeta Virus', 'approve' => 1],
+          ['name' => 'other', 'approve' => 1],
           ['name' => 'unknown', 'approve' => 1],
         ];
         DB::table('races')->insert($data);
