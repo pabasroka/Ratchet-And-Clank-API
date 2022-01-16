@@ -36,7 +36,9 @@
                                 <a class="nav-item nav-link text-light" href="{{ route('login') }}">{{ __('Login') }}</a>
                             @endif
                         @endguest
-                        <a class="nav-item nav-link text-light" href="{{ route('welcome') }}">{{ __('ADD DATA') }}</a>
+
+                        <a class="nav-item nav-link text-light" href="{{ route('welcome') }}">{{ __('Documentation') }}</a>
+                        <a class="nav-item nav-link text-light" href="{{ route('data') }}">{{ __('Add Data') }}</a>
                     </ul>
                 </div>
             </div>

@@ -29,6 +29,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->withoutMiddleware(['auth'])->name('welcome');
+Route::get('/data', [HomeController::class, 'data'])->withoutMiddleware(['auth'])->name('data');
 Route::get('/admin', [HomeController::class, 'admin'])->name('admin');
 Route::get('/logout', [LoginController::class, 'logout']);
 Route::get('/debug', [HomeController::class, 'debug'])->name('debug');

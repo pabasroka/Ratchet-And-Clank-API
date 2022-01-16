@@ -22,6 +22,11 @@ class HomeController extends Controller
         return view('welcome');
     }
 
+    public function data(): Renderable
+    {
+        return view('data');
+    }
+
     public function admin(): Renderable
     {
         $games = Game::where('approve', 0)->get();
