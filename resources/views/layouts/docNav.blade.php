@@ -10,18 +10,51 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
         body {
             overflow-x: hidden;
+        }
+        h3 {
+            color: #4b4b4b;
+        }
+        a, a:visited {
+            color: chartreuse;
+        }
+        a:hover, a:active {
+            color: white;
+        }
+        img {
+            display: block;
+            margin: auto;
+            width: 70%;
+        }
+        p {
+            padding: 10px;
+        }
+        .endpoint {
+            margin-top: 30px;
+        }
+        .http {
+            background: #4141ef;
+            padding: 10px;
+            border-radius: 10px;
+            font-weight: bolder;
+        }
+        .jsonViewer {
+            margin: 30px 0;
+            padding: 20px;
+            background: #888f96;
+            border-radius: 5px;
+        }
+        h5 {
+            margin-bottom: 20px;
         }
     </style>
 
@@ -31,12 +64,12 @@
     <div class="row min-vh-100 flex-column flex-md-row">
         <aside class="col-12 col-md-3 col-xl-2 p-0 bg-dark">
             <nav class="navbar navbar-expand-md navbar-dark bd-dark flex-md-column flex-row align-items-center py-2 text-center sticky-top " id="sidebar">
-                <div class="text-center p-3">
-                    <a href="#" class="navbar-brand mx-0 font-weight-bold text-nowrap" >Ratchet & Clank API</a>
-                </div>
                 <button type="button" class="navbar-toggler border-0 order-1" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                <div class="text-center p-3">
+                    <a href="#" class="navbar-brand mx-0 font-weight-bold text-nowrap" ><img src="{{ asset('images/logo.png') }}" alt="logo"></a>
+                </div>
 
                 <div class="collapse navbar-collapse order-last" id="nav">
                     <ul class="navbar-nav flex-column w-100 justify-content-center">
@@ -88,7 +121,6 @@
         </main>
     </div>
 </div>
-
 
 </body>
 </html>

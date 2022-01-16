@@ -88,7 +88,7 @@ class GamesController extends Controller
                 'releases' => $releases,
                 'platforms' => $platforms,
                 'skill_points' => $skillPoints,
-                'vehicle' => $vehicles,
+                'vehicles' => $vehicles,
             ];
 
         }

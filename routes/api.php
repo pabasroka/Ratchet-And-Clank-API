@@ -47,7 +47,7 @@ Route::group(['prefix'=> '/v1'], function () {
 
     // Games
     Route::group(['prefix' => '/games'], function () {
-        Route::get('/', [GamesController::class, 'index']);
+        Route::get('/', [GamesController::class, 'index'])->name('games.get');
         Route::get('/{id}', [GamesController::class, 'show']);
     });
 
