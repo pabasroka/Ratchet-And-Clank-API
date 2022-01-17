@@ -32,7 +32,7 @@ class WeaponController extends Controller
                 if ($item->image) {
                     $item->image = public_path('images/weapons/' . $item->image);
                 }
-                
+
                 $weaponEvolution[] = [
                     'id' => $item->id,
                     'name' => $item->name,
@@ -43,8 +43,6 @@ class WeaponController extends Controller
                     'image' => $item->image,
                 ];
             }
-
-
 
             $weaponsJSON[] = [
                 'id' => $weapon->id,
@@ -71,6 +69,22 @@ class WeaponController extends Controller
             $weapon->image = public_path('images/weapons/' . $weapon->image);
         }
 
+        foreach ($weapon->weaponsEvolution as $item) {
+            if ($item->image) {
+                $item->image = public_path('images/weapons/' . $item->image);
+            }
+
+            $weaponEvolution[] = [
+                'id' => $item->id,
+                'name' => $item->name,
+                'max_level' => $item->max_level,
+                'price' => $item->price,
+                'range' => $item->range,
+                'rate_of_fire' => $item->rate_of_fire,
+                'image' => $item->image,
+            ];
+        }
+
         $weaponJSON = [
             'id' => $weapon->id,
             'first_appearance' => $weapon->game_id,
@@ -78,7 +92,8 @@ class WeaponController extends Controller
             'price' => $weapon->price,
             'range' => $weapon->range,
             'rate_of_fire' => $weapon->rate_of_fire,
-            'image' => $weapon->image
+            'image' => $weapon->image,
+            'upgrade' => $weaponEvolution,
         ];
 
         return response()->json($weaponJSON);

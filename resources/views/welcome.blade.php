@@ -58,7 +58,7 @@
 
             <hr>
             <div id="weapons" class="endpoint">
-                weapons
+                @include('weapons.doc')
             </div>
 
             <hr>
