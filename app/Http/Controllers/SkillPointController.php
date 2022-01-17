@@ -42,7 +42,7 @@ class SkillPointController extends Controller
             ->where('approve', 1)
             ->firstOrFail();
 
-        $skillPointJSON[] = [
+        $skillPointJSON = [
             'id' => $skillPoint->id,
             'game_id' => $skillPoint->game_id,
             'planet_id' => $skillPoint->planet_id,

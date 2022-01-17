@@ -1,14 +1,14 @@
-<h3>Galaxies</h3>
+<h3>Races</h3>
 
 <p>
-    Galaxies endpoint
+    Races endpoint
 </p>
 
 <h5>Endpoint: </h5>
 <span class="http">GET</span>
-<a href="{{ route('galaxies.get') }}" target="_blank">{{ route('galaxies.get') }}/{id}</a>
+<a href="{{ route('races.get') }}" target="_blank">{{ route('races.get') }}/{id}</a>
 
-<pre id="jsonGalaxies" class="jsonViewer"></pre>
+<pre id="jsonRaces" class="jsonViewer"></pre>
 
 <h5>Type: </h5>
 <table class="table table-striped table-dark">
@@ -27,17 +27,17 @@
     </tr>
     <tr>
         <th scope="row">name</th>
-        <td>The name of the galaxy</td>
+        <td>The name of the race/species</td>
         <td>string</td>
     </tr>
     </tbody>
 </table>
 
-<script type="module" lang="js">
-    let url = "http://127.0.0.1:8000/api/v1/"
+<script lang="js">
+    url = "http://127.0.0.1:8000/api/v1/"
 
-    fetch(url + "galaxies/1").then(response => response.json()).then(data => {
-        document.querySelector("#jsonGalaxies").innerHTML = JSON.stringify(data, undefined, 2)
+    fetch(url + "races/1").then(response => response.json()).then(data => {
+        document.querySelector("#jsonRaces").innerHTML = JSON.stringify(data, undefined, 2);
     })
 
 </script>

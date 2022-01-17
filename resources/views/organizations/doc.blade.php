@@ -1,14 +1,14 @@
-<h3>Planets</h3>
+<h3>Organizations</h3>
 
 <p>
-    Planets endpoint return name, description, image
+    Organizations endpoint
 </p>
 
 <h5>Endpoint: </h5>
 <span class="http">GET</span>
-<a href="{{ route('planets.get') }}" target="_blank">{{ route('planets.get') }}/{id}</a>
+<a href="{{ route('organizations.get') }}" target="_blank">{{ route('organizations.get') }}/{id}</a>
 
-<pre id="jsonPlanets" class="jsonViewer"></pre>
+<pre id="jsonOrganizations" class="jsonViewer"></pre>
 
 <h5>Type: </h5>
 <table class="table table-striped table-dark">
@@ -32,12 +32,12 @@
     </tr>
     <tr>
         <th scope="row">name</th>
-        <td>The name of the planet</td>
+        <td>The name of the organization</td>
         <td>string</td>
     </tr>
     <tr>
         <th scope="row">description</th>
-        <td>The description of the planet (max length 500)</td>
+        <td>The description of the organization (max length 500)</td>
         <td>string</td>
     </tr>
     <tr>
@@ -51,8 +51,8 @@
 <script lang="js">
     url = "http://127.0.0.1:8000/api/v1/"
 
-    fetch(url + "planets/1").then(response => response.json()).then(data => {
-        document.querySelector("#jsonPlanets").innerHTML = JSON.stringify(data, undefined, 2);
+    fetch(url + "organizations/1").then(response => response.json()).then(data => {
+        document.querySelector("#jsonOrganizations").innerHTML = JSON.stringify(data, undefined, 2);
     })
 
 </script>

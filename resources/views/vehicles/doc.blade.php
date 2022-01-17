@@ -1,14 +1,14 @@
-<h3>Planets</h3>
+<h3>Vehicles</h3>
 
 <p>
-    Planets endpoint return name, description, image
+    Vehicles endpoint
 </p>
 
 <h5>Endpoint: </h5>
 <span class="http">GET</span>
-<a href="{{ route('planets.get') }}" target="_blank">{{ route('planets.get') }}/{id}</a>
+<a href="{{ route('vehicles.get') }}" target="_blank">{{ route('vehicles.get') }}/{id}</a>
 
-<pre id="jsonPlanets" class="jsonViewer"></pre>
+<pre id="jsonVehicles" class="jsonViewer"></pre>
 
 <h5>Type: </h5>
 <table class="table table-striped table-dark">
@@ -26,18 +26,13 @@
         <td>integer</td>
     </tr>
     <tr>
-        <th scope="row">galaxy_id</th>
-        <td>The identifier of the galaxy</td>
+        <th scope="row">game_id</th>
+        <td>The identifier of the game</td>
         <td>integer</td>
     </tr>
     <tr>
         <th scope="row">name</th>
-        <td>The name of the planet</td>
-        <td>string</td>
-    </tr>
-    <tr>
-        <th scope="row">description</th>
-        <td>The description of the planet (max length 500)</td>
+        <td>The name of the gadget</td>
         <td>string</td>
     </tr>
     <tr>
@@ -51,8 +46,8 @@
 <script lang="js">
     url = "http://127.0.0.1:8000/api/v1/"
 
-    fetch(url + "planets/1").then(response => response.json()).then(data => {
-        document.querySelector("#jsonPlanets").innerHTML = JSON.stringify(data, undefined, 2);
+    fetch(url + "vehicles/1").then(response => response.json()).then(data => {
+        document.querySelector("#jsonVehicles").innerHTML = JSON.stringify(data, undefined, 2);
     })
 
 </script>

@@ -6,7 +6,7 @@
 
 <h5>Endpoint: </h5>
 <span class="http">GET</span>
-<a href="{{ route('characters.get') }}">{{ route('characters.get') }}/{id}</a>
+<a href="{{ route('characters.get') }}" target="_blank">{{ route('characters.get') }}/{id}</a>
 
 <pre id="jsonCharacter" class="jsonViewer"></pre>
 

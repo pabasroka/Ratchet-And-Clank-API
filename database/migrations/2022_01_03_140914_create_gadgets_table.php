@@ -17,6 +17,7 @@ class CreateGadgetsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('game_id'); //first_appearance
             $table->string('name', 32);
+            $table->decimal('price',11)->nullable();
             $table->string("image")->nullable();
             $table->boolean('approve')->nullable()->default(0);
         });

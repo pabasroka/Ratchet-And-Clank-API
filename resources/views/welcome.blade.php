@@ -63,27 +63,27 @@
 
             <hr>
             <div id="gadgets" class="endpoint">
-                gadgets
+                @include('gadgets.doc')
             </div>
 
             <hr>
             <div id="vehicles" class="endpoint">
-                vehicles
+                @include('vehicles.doc')
             </div>
 
             <hr>
             <div id="skillpoints" class="endpoint">
-                skillpoints
+                @include('skillpoints.doc')
             </div>
 
             <hr>
             <div id="organizations" class="endpoint">
-                organizations
+                @include('organizations.doc')
             </div>
 
             <hr>
             <div id="races" class="endpoint">
-                races
+                @include('races.doc')
             </div>
 
         </div>
