@@ -43,7 +43,7 @@ Route::group(['prefix'=> '/v1'], function () {
             }
         }
        return $apiRoutes;
-    });
+    })->name('base');
 
     // Games
     Route::group(['prefix' => '/games'], function () {

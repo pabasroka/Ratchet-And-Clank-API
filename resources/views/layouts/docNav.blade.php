@@ -56,6 +56,13 @@
         h5 {
             margin-bottom: 20px;
         }
+        .base-url {
+            padding: 30px 0;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bolder;
+            color: chartreuse;
+        }
     </style>
 
 </head>

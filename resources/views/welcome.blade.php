@@ -34,6 +34,11 @@
                     </a>
                 </p>
 
+                <h3> Base API url: </h3>
+                <div class="base-url">
+                    <a href="{{ route('base') }}" target="_blank">{{ route('base') }}</a>
+                </div>
+
             </div>
 
             <hr>
