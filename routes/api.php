@@ -95,7 +95,7 @@ Route::group(['prefix'=> '/v1'], function () {
 
     // Characters
     Route::group(['prefix' => '/characters'], function() {
-        Route::get('/', [CharacterController::class, 'index']);
+        Route::get('/', [CharacterController::class, 'index'])->name('characters.get');
         Route::get('/{id}', [CharacterController::class, 'show']);
     });
 

@@ -122,5 +122,9 @@
     </div>
 </div>
 
+<script>
+    console.log(url)
+</script>
+
 </body>
 </html>
