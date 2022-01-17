@@ -53,43 +53,43 @@ Route::group(['prefix'=> '/v1'], function () {
 
     // Releases
     Route::group(['prefix' => '/releases'], function() {
-        Route::get('/', [ReleasesController::class, 'index']);
+        Route::get('/', [ReleasesController::class, 'index'])->name('releases.get');
         Route::get('/{id}', [ReleasesController::class, 'show']);
     });
 
     // Platforms
     Route::group(['prefix' => '/platforms'], function() {
-        Route::get('/', [PlatformsController::class, 'index']);
+        Route::get('/', [PlatformsController::class, 'index'])->name('platforms.get');
         Route::get('/{id}', [PlatformsController::class, 'show']);
     });
 
     // Races
     Route::group(['prefix' => '/races'], function() {
-        Route::get('/', [RaceController::class, 'index']);
+        Route::get('/', [RaceController::class, 'index'])->name('races.get');
         Route::get('/{id}', [RaceController::class, 'show']);
     });
 
     // Galaxies
     Route::group(['prefix' => '/galaxies'], function() {
-        Route::get('/', [GalaxyController::class, 'index']);
+        Route::get('/', [GalaxyController::class, 'index'])->name('galaxies.get');
         Route::get('/{id}', [GalaxyController::class, 'show']);
     });
 
     // Planets
     Route::group(['prefix' => '/planets'], function() {
-        Route::get('/', [PlanetController::class, 'index']);
+        Route::get('/', [PlanetController::class, 'index'])->name('planets.get');
         Route::get('/{id}', [PlanetController::class, 'show']);
     });
 
     // Skill Points
     Route::group(['prefix' => '/skillpoints'], function() {
-        Route::get('/', [SkillPointController::class, 'index']);
+        Route::get('/', [SkillPointController::class, 'index'])->name('skillpoints.get');
         Route::get('/{id}', [SkillPointController::class, 'show']);
     });
 
     // Vehicles
     Route::group(['prefix' => '/vehicles'], function() {
-        Route::get('/', [VehicleController::class, 'index']);
+        Route::get('/', [VehicleController::class, 'index'])->name('vehicles.get');
         Route::get('/{id}', [VehicleController::class, 'show']);
     });
 
@@ -101,19 +101,19 @@ Route::group(['prefix'=> '/v1'], function () {
 
     // Weapons
     Route::group(['prefix' => '/weapons'], function() {
-        Route::get('/', [WeaponController::class, 'index']);
+        Route::get('/', [WeaponController::class, 'index'])->name('weapons.get');
         Route::get('/{id}', [WeaponController::class, 'show']);
     });
 
     // Gadgets
     Route::group(['prefix' => '/gadgets'], function() {
-        Route::get('/', [GadgetController::class, 'index']);
+        Route::get('/', [GadgetController::class, 'index'])->name('gadgets.get');
         Route::get('/{id}', [GadgetController::class, 'show']);
     });
 
     // Organizations
     Route::group(['prefix' => '/organizations'], function() {
-        Route::get('/', [OrganizationController::class, 'index']);
+        Route::get('/', [OrganizationController::class, 'index'])->name('organizations.get');
         Route::get('/{id}', [OrganizationController::class, 'show']);
     });
 
