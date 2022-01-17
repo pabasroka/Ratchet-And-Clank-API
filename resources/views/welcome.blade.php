@@ -48,12 +48,12 @@
 
             <hr>
             <div id="galaxies" class="endpoint">
-                galaxies
+                @include('galaxies.doc')
             </div>
 
             <hr>
             <div id="planets" class="endpoint">
-                planets
+                @include('planets.doc')
             </div>
 
             <hr>
